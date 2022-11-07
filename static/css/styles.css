@@ -1,0 +1,15 @@
+
+.landing {
+    background: url(/static/images/Landing\ page1.jpg); 
+    height: 650px;
+    background-position: center;    
+    background-size: cover;    
+  }
+
+  /* .landing text {
+    margin-top: 30%;
+  } */
+
+
+  
+ 
