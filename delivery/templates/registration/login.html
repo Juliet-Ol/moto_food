@@ -1,0 +1,56 @@
+{% extends "registration/base.html"%}
+{% load bootstrap5 %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row" style="background-image: url(/static/images/Create\ and\ account\ or\ login.jpg); height: 650px;
+    background-position: center;    
+    background-size: cover; "> 
+    <div class="row">  
+      
+      <div class="col-md-4">
+      
+      </div>
+  
+      
+      <div class="col-md-6">
+        {% if form.errors %}
+          <p style="color: white;" > Information Might be Incorrect </p>
+        {% endif %}
+        <div class="panel panel-default">
+  
+          <div class="panel-heading">
+            <h3 class="text-center" style="color: white;">Log in </h3>
+            
+            <hr>
+            {% if messages%}
+              {%for message in messages %}
+              <p>{{message}}</p>
+              {% endfor%}
+            {% endif %}
+          </div>
+
+
+          <div class="panel-body">
+            <div class="shadow-lg p-3 mb-5 bg-white rounded" >
+
+          <form action="" method="post" class="form">
+              {% csrf_token %}
+              {% bootstrap_form form %}
+              {% buttons %}
+                  <button type="submit" class="btn btn-primary">Submit</button>
+              {% endbuttons %}
+
+              <a class="link active" aria-current="page" href="#"> Create Account </a>
+              
+
+              <input type="hidden" name="next" value="{{next}}">
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
