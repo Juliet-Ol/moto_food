@@ -1,0 +1,42 @@
+<html>
+  <head>
+    {% extends 'moto/base.html' %}
+    {% load static %}
+    {% load bootstrap5 %}
+
+    {% block styles %}
+    {% bootstrap_css %}
+    <link href='{% static "./css/styles.css" %}' rel='stylesheet' type='text/css'>
+    {% endblock %}
+  </head>
+
+  <body>    
+    {% block content %}
+    <!-- landing page section-->
+    {% include 'navbar.html'%}  
+    <div>  
+      <div class="landing">  
+        <div class="landing text" >          
+          <h1 align="center"> Moto Food Delivery </h1>       
+        </div> 
+      </div>         
+    </div>
+    
+    
+   
+
+
+    {% endblock%}
+    
+    {% block scripts %}
+    {% bootstrap_css %}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    {%endblock%}
+    {% bootstrap_javascript %} 
+    
+        
+
+   
+
+  </body>  
+</html>
