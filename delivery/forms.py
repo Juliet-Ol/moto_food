@@ -1,27 +1,32 @@
 from django import forms
 from . models import Vendor, Customer, Order, Profile 
-from django.contrib.auth.models import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 
-
-class VendorForm(forms.form):
+class VendorForm(forms.ModelForm):
     class Meta:
         model = Vendor
         fields = '__all__'
 
 
-class CustomerForm(forms.form):
+class CustomerForm(forms.ModelForm):
     class Meta:
         model = Customer
         fields = '__all__'
 
-class OrderForm(forms.form):
+class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = '__all__'
 
-class ProfileForm(forms.form):
+class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = '__all__'
 
+class SignupForm(UserCreationForm):  
+    email = forms.EmailField(max_length=200, help_text='Required')  
+    class Meta:  
+        model = User  
+        fields = ('username', 'email', 'password1', 'password2')
