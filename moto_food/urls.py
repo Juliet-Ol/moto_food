@@ -15,10 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views
+# from delivery import views as delivery_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('delivery.urls')),
+    # path('register/', delivery_views.register, name='register'),
+
     path('accounts/', include('django_registration.backends.one_step.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
