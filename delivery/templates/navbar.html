@@ -6,14 +6,39 @@
           <a class="nav-link active" style="color: black; font-weight: bolder;" href="/"> Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color: black; font-weight: bolder;" href=" about us"> About Us</a>
+          <a class="nav-link" style="color: black; font-weight: bolder;" href="about us"> About Us</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: black; font-weight: bolder;" href="profile"> Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: black; font-weight: bolder;" href="#"> {{request.user.username}} is logged in</a>
+        </li>
+        
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" style="color: black; font-weight: bolder; " href="accounts/logout"> logout </a>
+        </li>
+        {% else %}
         <li class="nav-item">
           <a class="nav-link" style="color: black;  font-weight: bolder;" href="accounts/login">Login </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color: black; font-weight: bolder; " href="accounts/register"> Signup </a>
+          <a class="nav-link" style="color: black; font-weight: bolder; " href="register"> Signup </a>
         </li>
+        <div class="form-inline my-2 my-lg-0">
+               
+                  
+          <a href="{% url 'cart' %}">
+              <!-- <img  id="cart-icon" src="{% static 'images/cart.png' %}"> -->
+              <img  src="/static/images/6+cart.png" alt="">
+            </a>
+          <p id="cart-total">0</p>
+         
+        </div>
+        {% endif %}
+        
+       
       </ul>
       
 </body>
