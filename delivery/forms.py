@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import User
-from delivery.models import User, Order, Profile 
+from delivery.models import User, Order, Profile, Post 
 
 class LoginForm(forms.Form):
     username = forms.CharField(
@@ -55,15 +55,15 @@ class SignUpForm(UserCreationForm):
         fields = ('username', 'email', 'password1', 'password2', 'is_admin', 'is_vendor', 'is_customer', 'is_rider')
 
 
-class ProfileForm(forms.Form):
+class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('username', 'email', 'full_name', 'photo', 'location', 'mobile_number')
+        fields = '__all__'
 
-class EditProfileForm(forms.Form):
+class PostForm(forms.ModelForm):
     class Meta:
-        model = Profile
-        fields = ('username', 'email', 'full_name', 'photo', 'location', 'mobile_number')  
+        model = Post
+        fields = '__all__'  
 
         
 
