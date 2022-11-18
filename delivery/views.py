@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from .forms import SignUpForm, LoginForm
 from django.contrib.auth import authenticate, login
-from .forms import ProfileForm, EditProfileForm
-from .models import Profile
+from .forms import ProfileForm, PostForm
+from .models import Profile, Post
+from django.contrib import messages
 
 
 
@@ -77,8 +78,11 @@ def cart(request):
     return render(request, 'cart/cart.html')     
 
 
-def editProfile(request):
-    form = EditProfileForm(initial={'name':request.user.username, 'location':'test'})
+def edit_profile(request):
+
+    profile= Profile.objects.all()
+
+    form = ProfileForm()
 
    
     return render(request, 'profile/edit_profile.html', {'form': form})      
@@ -87,34 +91,37 @@ def editProfile(request):
 def profile(request):
     form = ProfileForm(request.POST, request.FILES)
     # profile=Profile.objects.get(user= request.user.id)
-    profile = Profile.objects.all().update()
+    profile = Profile.objects.all()
+    # profile=Profile.objects.get()
+    print(profile)
     if request.method == 'POST':
         form = ProfileForm(request.POST)
        
        
         if form.is_valid():
-            # profile.photo=form.cleaned_data['photo']  if len(request.FILES) != 0 else profile.photo 
-            # profile.full_name=form.cleaned_data[' full name']  
-            # profile.email=form.cleaned_data['email'] 
-            profile.user=request.user      
+            print(profile)
+            photo=form.cleaned_data['photo']  
+            full_name=form.cleaned_data['full_name']  
+            email=form.cleaned_data['email'] 
+            # username=form.cleaned_data['username']
+            profile = {'photo':photo, 'full_name':full_name, 'email':email}
+           
+            # profile.username=request.user     
 
               
-            
-            profile.save()
-
-            
+            form.save()            
 
             # profile=Profile.objects.get(author= request.user.id)
             # messages.success(request, 'Profile has been updated')
 
-            return redirect ('/profile')
+            return redirect ('profile')
         else:
-            return render(request, 'profile/edit.html', {'form': form})
+            return render(request, 'profile/edit_profile.html', {'form': form})
 
     # else:
         
 
-    #     if Profile.objects.filter(user = request.user.id).count() == 0:
+    #     if Profile.objects.filter(user = request.user).count()
     #         profile = Profile(user=request.user, full_name=request.user.full_name, email=request.user.email)
     #         profile.save()
     else:
@@ -122,8 +129,65 @@ def profile(request):
         return render(request, 'profile/profile.html', {'form': form, 'profile':profile})      
 
 
+def post(request):
+    form = PostForm
+    current_user = request.user
+    if request.method == 'POST':
+        print(request.POST['post'])
+        form = PostForm(request.POST, request.FILES)
+        
+        if form.is_valid():
+            post = Post()
+            post.title = form.cleaned_data['title']
+            post.post = form.cleaned_data['post']
+            post.author = current_user            
+            post.picture = form.cleaned_data['picture']
+            post.save()
+            messages.success(request, 'Posted')
+
+            return redirect ('/')
+        else:
+            return render(request, 'food_vendor/new_post.html', {'form': form})
+
+    else:
+        return render(request, 'food_vendor/new_post.html', {'form': form})  
 
 
+
+
+
+# def editProfile(request):
+#     current_user = request.user
+#     if request.method == 'POST':
+#         form = ProfileForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             profile= Profile.objects.filter(username=current_user)
+#             print(profile)
+#             if profile:
+#                 print('profile exist')
+#                 photo=form.cleaned_data['photo']  
+#                 full_name=form.cleaned_data['full_name']  
+#                 email=form.cleaned_data['email'] 
+#                 username=form.cleaned_data['username']
+#                 AuthenticationError=form.cleaned_data['AuthenticationError']
+#                 Profile.objects.filter(username=current_user).update(email=email, full_name=full_name,photo=photo, username=username,AuthenticationError=AuthenticationError)
+#             else:
+#                 print('profile does not exist')
+                
+#                 print('profile does not exist')
+#                 profile=form.save(commit=False)
+#                 profile.username= current_user
+#                 profile.save()
+
+#             message='saved successfuly'
+#             # profile_display(request)
+#             return redirect(profile/profile.html)
+    
+            
+#     else:
+#         form = ProfileForm()
+        
+#     return render(request, 'profile/profile.html',{'form':form})      
 
 
 
