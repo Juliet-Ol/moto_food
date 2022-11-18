@@ -17,14 +17,20 @@ class Profile(models.Model):
     full_name = models.CharField(max_length=100, blank=False)     
     mobile_number = models.IntegerField(default='')
     location = models.CharField(max_length=100, default='')
-    email = models.EmailField(null=True) 
-    user = models.OneToOneField(User, on_delete=models.CASCADE, default='')   
+    email = models.EmailField(null=True)       
     photo = models.ImageField(default='default.jpg', upload_to='profile_pics' ) 
-    # photo =  CloudinaryField('image', default='')   
+    photo =  CloudinaryField('photo', default='')   
 
     def __str__(self):
         return f'{self.user.username} Profile'
 
+class Post (models.Model):
+    title = models.CharField(max_length=20)
+    post = models.CharField(max_length=100)
+    author = models.ForeignKey(User, on_delete = models.CASCADE)   
+    published_date = models.DateTimeField(auto_now_add=True)
+    picture = CloudinaryField('image')
+    food_rating = models.IntegerField(default=0)        
 
 
 class Order(models.Model):  
