@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.index, name= 'index'),
@@ -10,12 +12,14 @@ urlpatterns = [
     path('customer/', views.customer, name='customer'),
     path('vendor/', views.vendor, name='vendor'),
     path('rider/', views.rider, name='rider'),
-    path('profile/', views.profile, name='profile'),
-    path('edit_profile', views.editProfile, name='edit_profile'),
+    path('profile', views.profile, name='profile'),
+    path('edit_profile/', views.edit_profile, name='edit_profile'),
+    path('post', views.post, name='post'),
     path('cart', views.cart, name='cart'),
     
 ]
-
+if settings.DEBUG:
+    urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
 
 
