@@ -14,8 +14,14 @@ urlpatterns = [
     path('rider/', views.rider, name='rider'),
     path('profile', views.profile, name='profile'),
     path('edit_profile/', views.edit_profile, name='edit_profile'),
-    path('post', views.post, name='post'),
-    path('cart', views.cart, name='cart'),
+    path('post/', views.post, name='post'),
+    path('store/', views.store, name='store'),
+    path('cart/', views.cart, name='cart'),
+    path('checkout/', views.checkout, name='checkout'),
+    path('update_item/', views.updateItem, name='update_item'),
+    
+    # path('view-post/<int:id>', views.viewPost, name="view-post"),
+    # path('edit-post/<int:id>', views.editPost, name='edit-post')
     
 ]
 if settings.DEBUG:
