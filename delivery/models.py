@@ -2,7 +2,104 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from  cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
+from django.conf import settings
+from datetime import datetime
 
+
+class Customer(models.Model):
+    user =models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,)
+    full_name = models.CharField(max_length=100, blank=True, null=True)
+    email = models.EmailField(null=True)  
+
+    def __str__(self):
+        return self.full_name
+
+class Product(models.Model):
+    name = models.CharField(max_length=200)
+    price = models.FloatField()
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    image = models.ImageField(null=True, blank=True)
+    digital = models.BooleanField(default=False, null=True, blank=True)
+
+    def __str__(self):
+        return self.name  
+
+    def __str__(self):
+        return self.name   
+
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+
+        except:  
+            url = ''
+        return url       
+
+
+
+class Order(models.Model):     
+    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True) 
+    date_ordered = models.DateTimeField(auto_now_add=True)
+    complete = models.BooleanField(default=False)
+    transaction_id = models.CharField(max_length=200, null=True)
+    #image
+    def __str__(self):
+        return str(self.id)
+
+    def __str__(self):
+        return str(self.id)
+
+
+        
+
+    @property
+    def get_cart_total(self):
+        orderitems = self.orderitem_set.all()        
+        total = sum([item.get_total for item in orderitems])
+        return total  
+
+    @property
+    def get_cart_items(self):
+        orderitems = self.orderitem_set.all()        
+        total = sum([item.quantity for item in orderitems])
+        return total  
+
+    # @property
+    # def get_sum_total(self):
+    #     price = self.product.deal_price
+    #     quantity = self.quantity
+    #     total = sum(price*quantity)
+    #     # total = sum(product.get_sum_total for product in productItem)
+    #     return total       
+
+    
+class OrderItem(models.Model): 
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
+    quantity = models.IntegerField(default=0, null=True, blank=True)
+    date_added = models.DateField(auto_now_add=True)
+    #image
+    # def __str__(self):
+    #     return str(self.id)   
+    # 
+    @property
+    def get_total(self):
+        total = self.product.price * self.quantity
+        return total    
+
+class ShippingAddress(models.Model):
+    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
+    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
+    address = models.CharField(max_length=200, null=False)
+    house_number = models.CharField(max_length=200, null=False)
+    date_added = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.address
+                 
 
 
 
@@ -11,15 +108,81 @@ class User(AbstractUser):
     is_customer = models.BooleanField('Is customer', default=False)
     is_vendor = models.BooleanField('Is vendor', default=False)
     is_rider = models.BooleanField('Is rider', default=False)
+    # is_verified = models.BooleanField(default=False)
+    full_name = models.CharField(max_length=100, blank=False, default='', null=True)
+    # email = models.EmailField(max_length=100, blank=False)
+
+    def save_user(self):
+        self.save()
+
+    def update_user(self):
+        self.update()
+
+    def delete_user(self):
+        self.delete()
+
+# class Approvals(models.Model):
+#     full_name = models.CharField(max_length = 100)
+#     verification = models.BooleanField(blank=True)
+
+# class Admin(models.Model):
+#     username = models.TextField()
+#     # approval = models.ForeignKey(Approvals, on_delete=models.CASCADE, related_name='approval')
+
+
+class Vendor(models.Model):  
+    user =models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE, null=True, default='')  
+    full_name = models.CharField(max_length=100, blank=False)
+    restaurant_name = models.CharField(max_length=100, blank=False)
+    description = models.TextField(null=True) 
+    # mobile_number = models.IntegerField(blank=False)
+    email = models.EmailField(unique=True) 
+    location = models.CharField(max_length=100, blank=False)
+    created_at = models.DateField(null=True, blank=True)
+    photo =  CloudinaryField('image', default='')
+    # approval = models.ForeignKey(Approvals, on_delete=models.CASCADE, related_name='vendor_approval')
+    
+
+#     def __str__(self):
+#         return self.full_name
+
+# class Tag(models.Model):
+#     full_name = models.CharField(max_length=100, null=True)
+
+#     def __str__(self):
+#         return self.full_name   
+
+class Rider(models.Model): 
+    user =models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE, null=True, default='')  
+    full_name = models.CharField(max_length=100, blank=False)    
+    description = models.TextField(null=True) 
+    mobile_number = models.IntegerField(blank=False)
+    email = models.EmailField(unique=True) 
+    location = models.CharField(max_length=100, blank=False)
+    created_at = models.DateField(null=True, blank=True)
+    photo =  CloudinaryField('image', default='') 
+    # approval = models.ForeignKey(Approvals, on_delete=models.CASCADE, related_name='customer_approval', default='')
+
+
+    
+
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=100, blank=False)     
     mobile_number = models.IntegerField(default='')
     location = models.CharField(max_length=100, default='')
-    email = models.EmailField(null=True)       
-    photo = models.ImageField(default='default.jpg', upload_to='profile_pics' ) 
-    photo =  CloudinaryField('photo', default='')   
+    email = models.EmailField(null=True)  
+    # photo =  CloudinaryField('photo', default='') 
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics' ) 
+       
+    # photo = models.ImageField(default='default.jpg', upload_to='profile_pics' ) 
+    # photo =  CloudinaryField('photo', default='')   
 
     def __str__(self):
         return f'{self.user.username} Profile'
@@ -30,18 +193,35 @@ class Post (models.Model):
     author = models.ForeignKey(User, on_delete = models.CASCADE)   
     published_date = models.DateTimeField(auto_now_add=True)
     picture = CloudinaryField('image')
-    food_rating = models.IntegerField(default=0)        
+    # price = models.FloatField()
+    # food_rating = models.IntegerField(default=0)        
 
 
-class Order(models.Model):  
-    status = models.CharField(max_length=100)
-    vendor_name = models.CharField(max_length=100, blank=False) 
-    created_at = models.DateTimeField(auto_now=True)
-    price = models.DecimalField(max_digits=6, decimal_places=2)
-    # user = models.OneToOneField(User, on_delete=models.CASCADE, default='')       
+# class Order(models.Model):  
+#     status = models.CharField(max_length=100)
+#     vendor_name = models.CharField(max_length=100, blank=False) 
+#     created_at = models.DateTimeField(auto_now=True)
+#     price = models.DecimalField(max_digits=6, decimal_places=2)
+#     # user = models.OneToOneField(User, on_delete=models.CASCADE, default='')       
 
 
+class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(default=datetime.now)
 
+# class CartItem(models.Model):
+#     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+#     quantity = models.IntegerField(default=1)
+#     price_ht = models.FloatField(blank=True)
+#     cart = models.ForeignKey('Cart', on_delete=models.CASCADE)
+
+#     # TAX_AMOUNT = 19.25
+
+#     def price_ttc(self):
+#         return self.price_ht 
+
+#     def __str__(self):
+#         return  self.client + " - " + self.product
 
 
 
