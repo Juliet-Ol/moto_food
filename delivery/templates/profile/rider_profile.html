@@ -1,0 +1,100 @@
+{%extends "moto/base.html"%}
+{% load bootstrap5 %}
+{% block content %}
+{% load static %}
+
+
+<div class="content-section" >
+    <div class="static">
+        <a href="edit_profile"> Edit Profile </a>
+        <img class="rounded-circle account-img" style="width: 10%;" src=" {{ photo.url }} " alt="">
+        <img class="rounded-circle account-img" style="width: 10%;" src="/static/images/burger and chips.jpg" alt="">
+        
+        <div class="static-body">
+            <h2 class="account-heading"> {{ full_name }} </h2>
+            <p class="test-secondary"> {{mobile_number }} </p>
+            <p class="test-secondary"> {{profile.email }} </p>
+            <p class="test-secondary"> {{profile.bio }} </p>
+            <p class="test-secondary"> {{profile.location }} </p>
+        </div>    
+    </div>
+</div>
+
+<link rel="stylesheet" href="/static/css/styles.css">
+
+<h3>Rider Profile, Photo and posts</h3>
+<div class="content-section" >
+    <div class="static">
+        
+        <img class="rounded-circle account-img" style="width: 10%;" src=" {{ photo.url }} " alt="">
+        <img class="rounded-circle account-img" style="width: 10%;" src="/static/images/burger and chips.jpg" alt=""> Restaurant name
+        
+        <div class="static-body">
+            <h2 class="account-heading"> {{ full_name }} </h2>
+            <p class="test-secondary"> {{mobile_number }} </p>
+            <p class="test-secondary"> {{profile.email }} </p>
+            <p class="test-secondary"> {{profile.bio }} </p>
+            <p class="test-secondary"> {{profile.location }} </p>
+        </div>    
+    </div>
+</div>
+
+<h2 align="center"> Our Menu </h2> 
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+       
+
+    <div class="col" >
+      <div class="card" style="border: none; max-width: 100%x; max-height: 500px; margin-left: 10px; margin-right: 20px; margin-top: 20px; " >
+        <img  src="/static/images/griller.jpg" class="card-img-top" alt="..." >
+        <div class="card-body">
+          <h5 class="card-title"> Roasted Meat</h5>
+          <p class="card-text">It is served with chips or ugali.</p>
+          <p>Ksh 1800</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" style="border: none; max-width: 100%x; margin-left: 10px; margin-right: 20px; margin-top: 20px; max-height: 500px;" >
+        <img src="/static/images/Create and account or login.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Pizza</h5>
+          <p class="card-text"> Hawaiian Piza comes with extra Cheese</p>
+          <p> Ksh 1700</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" style="border: none; max-width: 100%x; margin-left: 10px; margin-right: 20px; margin-top: 20px; max-height: 500px; " >
+        <img src="/static/images/burger and chips.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"> Burger and chips</h5>
+          <p class="card-text">extra huge</p>
+          <p> Ksh 800</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" style="border: none; max-width: 100%x; margin-left: 10px; margin-right: 20px; margin-top: 20px; max-height: 500px; " >
+        <img src="/static/images/ke-vin-szQFiGZH8wU-unsplash.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"> Chicken Biriani</h5>
+          <p class="card-text">Either with chilli or plain</p>
+          <p> Ksh 1000</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+        <div class="card" style="border: none; max-width: 100%x; margin-left: 10px; margin-right: 20px; margin-top: 20px; " >
+          <img src="/static/images/ferks-guare-kiZKA2rZ8Y0-unsplash.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Fish Fillet</h5>
+            <p class="card-text">Served with chips.</p>
+            <p> Ksh 900</p>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+{% endblock content%}
