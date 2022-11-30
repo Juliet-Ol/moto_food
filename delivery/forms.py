@@ -50,15 +50,24 @@ class SignUpForm(UserCreationForm):
         )
     )
 
+    full_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control"
+            }
+        )
+    )
+
     class Meta:
         model = User
-        fields = ('username', 'email', 'password1', 'password2', 'is_admin', 'is_vendor', 'is_customer', 'is_rider')
+        fields = ('username', 'email', 'full_name', 'password1', 'password2', 'is_admin', 'is_vendor', 'is_customer', 'is_rider')
 
 
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = '__all__'
+        fields = ('user', 'email', 'image', 'location', 'full_name', 'mobile_number')
+        # fields = '__all__'
 
 class PostForm(forms.ModelForm):
     class Meta:
