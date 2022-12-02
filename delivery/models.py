@@ -10,18 +10,23 @@ class Customer(models.Model):
     user =models.OneToOneField(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,)
-    full_name = models.CharField(max_length=100, blank=True, null=True)
+    full_name = models.CharField(max_length=200, blank=True, null=True)
     email = models.EmailField(null=True)  
 
     def __str__(self):
         return self.full_name
 
 class Product(models.Model):
+    # user =models.OneToOneField(
+    #     settings.AUTH_USER_MODEL,
+    #     on_delete=models.CASCADE,)
+    # vendor = models.ForeignKey(Vendor, on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=200)
     price = models.FloatField()
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
-    image = models.ImageField(null=True, blank=True)
-    digital = models.BooleanField(default=False, null=True, blank=True)
+   
+    description = models.TextField(blank=True)
+    
 
     def __str__(self):
         return self.name  
@@ -40,7 +45,10 @@ class Product(models.Model):
 
 
 
-class Order(models.Model):     
+class Order(models.Model): 
+    # user =models.OneToOneField(
+    #     settings.AUTH_USER_MODEL,
+    #     on_delete=models.CASCADE,)    
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True) 
     date_ordered = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False)
@@ -81,6 +89,7 @@ class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
     quantity = models.IntegerField(default=0, null=True, blank=True)
     date_added = models.DateField(auto_now_add=True)
+    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True) 
     #image
     # def __str__(self):
     #     return str(self.id)   
@@ -99,6 +108,56 @@ class ShippingAddress(models.Model):
 
     def __str__(self):
         return self.address
+
+
+class Approvals(models.Model):
+    full_name = models.CharField(max_length = 100)
+    verification = models.BooleanField(blank=False) 
+
+class Admin(models.Model):
+    user =models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE, null=True, default='') 
+    username = models.TextField()
+    approval = models.ForeignKey(Approvals, on_delete=models.CASCADE, related_name='approval')           
+
+class Vendor(models.Model):  
+    user =models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE, null=True, default='')  
+    full_name = models.CharField(max_length=100, blank=False)
+    restaurant_name = models.CharField(max_length=100)
+    description = models.TextField(max_length=250) 
+    # mobile_number = models.IntegerField(blank=False)
+    email = models.EmailField(unique=True) 
+    location = models.CharField(max_length=100)
+    created_at = models.DateField(null=True, blank=True)
+    photo =  CloudinaryField('image', default='')
+    approved = models.BooleanField('Approved', default=False)
+  
+    
+
+#     def __str__(self):
+#         return self.full_name
+
+# class Tag(models.Model):
+#     full_name = models.CharField(max_length=100, null=True)
+
+#     def __str__(self):
+#         return self.full_name   
+
+class Rider(models.Model): 
+    user =models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE, null=True, default='')  
+    full_name = models.CharField(max_length=100)    
+    description = models.TextField(max_length=250) 
+    # mobile_number = models.IntegerField(blank=False)
+    email = models.EmailField(unique=True) 
+    location = models.CharField(max_length=100)
+    created_at = models.DateField(null=True, blank=True)
+    photo =  CloudinaryField('image', default='') 
+    approved = models.BooleanField('Approved', default=False)        
                  
 
 
@@ -121,51 +180,12 @@ class User(AbstractUser):
     def delete_user(self):
         self.delete()
 
-# class Approvals(models.Model):
-#     full_name = models.CharField(max_length = 100)
-#     verification = models.BooleanField(blank=True)
-
-# class Admin(models.Model):
-#     username = models.TextField()
-#     # approval = models.ForeignKey(Approvals, on_delete=models.CASCADE, related_name='approval')
 
 
-class Vendor(models.Model):  
-    user =models.OneToOneField(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE, null=True, default='')  
-    full_name = models.CharField(max_length=100, blank=False)
-    restaurant_name = models.CharField(max_length=100, blank=False)
-    description = models.TextField(null=True) 
-    # mobile_number = models.IntegerField(blank=False)
-    email = models.EmailField(unique=True) 
-    location = models.CharField(max_length=100, blank=False)
-    created_at = models.DateField(null=True, blank=True)
-    photo =  CloudinaryField('image', default='')
-    # approval = models.ForeignKey(Approvals, on_delete=models.CASCADE, related_name='vendor_approval')
-    
 
-#     def __str__(self):
-#         return self.full_name
 
-# class Tag(models.Model):
-#     full_name = models.CharField(max_length=100, null=True)
 
-#     def __str__(self):
-#         return self.full_name   
 
-class Rider(models.Model): 
-    user =models.OneToOneField(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE, null=True, default='')  
-    full_name = models.CharField(max_length=100, blank=False)    
-    description = models.TextField(null=True) 
-    mobile_number = models.IntegerField(blank=False)
-    email = models.EmailField(unique=True) 
-    location = models.CharField(max_length=100, blank=False)
-    created_at = models.DateField(null=True, blank=True)
-    photo =  CloudinaryField('image', default='') 
-    # approval = models.ForeignKey(Approvals, on_delete=models.CASCADE, related_name='customer_approval', default='')
 
 
     
@@ -178,8 +198,9 @@ class Profile(models.Model):
     mobile_number = models.IntegerField(default='')
     location = models.CharField(max_length=100, default='')
     email = models.EmailField(null=True)  
-    # photo =  CloudinaryField('photo', default='') 
-    image = models.ImageField(default='default.jpg', upload_to='profile_pics' ) 
+    
+    photo =  CloudinaryField('photo', default='') 
+    image = models.ImageField( upload_to='profile_pics', default='default.jpg', ) 
        
     # photo = models.ImageField(default='default.jpg', upload_to='profile_pics' ) 
     # photo =  CloudinaryField('photo', default='')   
@@ -188,13 +209,25 @@ class Profile(models.Model):
         return f'{self.user.username} Profile'
 
 class Post (models.Model):
+    # vendor = models.ForeignKey(Vendor, on_delete=models.SET_NULL, null=True, blank=True)
     title = models.CharField(max_length=20)
     post = models.CharField(max_length=100)
     author = models.ForeignKey(User, on_delete = models.CASCADE)   
     published_date = models.DateTimeField(auto_now_add=True)
     picture = CloudinaryField('image')
-    # price = models.FloatField()
+    price = models.FloatField(default=False)
+    customer = models.ForeignKey(Vendor, on_delete=models.SET_NULL, null=True, blank=True) 
     # food_rating = models.IntegerField(default=0)        
+
+
+
+
+
+
+
+
+
+
 
 
 # class Order(models.Model):  
@@ -205,9 +238,9 @@ class Post (models.Model):
 #     # user = models.OneToOneField(User, on_delete=models.CASCADE, default='')       
 
 
-class Cart(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(default=datetime.now)
+# class Cart(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     created_at = models.DateTimeField(default=datetime.now)
 
 # class CartItem(models.Model):
 #     product = models.ForeignKey(Product, on_delete=models.CASCADE)
