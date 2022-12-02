@@ -114,7 +114,40 @@ def login_view(request):
             msg = 'error validating form'
     return render(request, 'registration/login.html', {'form': form, 'msg': msg})
 
+def approval(request):
+    user_list = User.objects.all()
+    print(user_list)
+    if request.user.is_superuser:
+        if request.method == "POST":
+            id_list = request.POST.getlist('boxes')
+            
+            #uncheck 
+            user_list.update(approved=False)
+            
+            #update the database
+            for x in id_list:
+                # User.objects.filter(pk=int(x)).update(approved=True) 
+                User.objects.filter().update(approved=True) 
+            print(id_list)
 
+            messages.success(request, 'User successfully approved')  
+            return redirect('index') 
+
+        else:    
+            return render (request,'registration/approval.html',{'user_list': user_list})
+        
+        
+            # id_list = request.POST.getlist('boxes')
+            # print(id_list)
+
+    else:
+        messages.success(request, 'you are not authorised to view this page')  
+
+        return redirect('index')        
+
+
+
+    return render(request, 'registration/approval.html')
 
 # def approval(request):
 
@@ -141,7 +174,7 @@ def login_view(request):
 #         return redirect('index')  
 
 
-#     return render (request,'registration/approval.html')    
+        # return render (request,'registration/approval.html')    
 
 
 
