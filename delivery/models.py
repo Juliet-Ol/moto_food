@@ -169,6 +169,7 @@ class User(AbstractUser):
     is_rider = models.BooleanField('Is rider', default=False)
     # is_verified = models.BooleanField(default=False)
     full_name = models.CharField(max_length=100, blank=False, default='', null=True)
+    approved = models.BooleanField('Approved', default=False)
     # email = models.EmailField(max_length=100, blank=False)
 
     def save_user(self):
