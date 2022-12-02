@@ -4,23 +4,30 @@
 {% load static %}
 
 
-<div class="content-section" >
-    <div class="static">
-        <a href="edit_profile"> Edit Profile </a>
-        <img class="rounded-circle account-img" style="width: 10%;" src=" {{ photo.url }} " alt="">
-        <img class="rounded-circle account-img" style="width: 10%;" src="/static/images/burger and chips.jpg" alt="">
-        
-        <div class="static-body">
-            <h2 class="account-heading"> {{ full_name }} </h2>
-            <p class="test-secondary"> {{mobile_number }} </p>
-            <p class="test-secondary"> {{profile.email }} </p>
-            <p class="test-secondary"> {{profile.bio }} </p>
-            <p class="test-secondary"> {{profile.location }} </p>
-        </div>    
-    </div>
+<link rel="stylesheet" href="/static/css/styles.css">
+<br><br>
+<h3 align="center">Rider Profile, Photo and posts</h3>
+
+<div class="container">
+  <div class="content-section" >
+      <div class="static">
+          <a href="{% url 'edit_profile' %}"> Edit Profile </a>
+          <img class="rounded-circle account-img" style="width: 10%;" src=" {{ photo.url }} " alt="">
+          <img class="rounded-circle account-img" style="width: 10%;" src="/static/images/burger and chips.jpg" alt=""> Restaurant name
+          
+          <div class="static-body">
+              <h2 class="account-heading">Name {{ user.profile.full_name }} </h2>
+              <p class="test-secondary">Mobile Number: {{user.profile.mobile_number }} </p>
+              <p class="test-secondary"> Email: {{user.profile.email }} </p>
+              <p class="test-secondary"> Description: {{user.profile.description }} </p>
+              <p class="test-secondary"> Location: {{user.profile.location }} </p>
+              <p class="test-secondary">Approved: {{user.rider.approved}} </p>
+          </div>    
+      </div>
+  </div>
 </div>
 
-<link rel="stylesheet" href="/static/css/styles.css">
+<!-- <link rel="stylesheet" href="/static/css/styles.css">
 
 <h3>Rider Profile, Photo and posts</h3>
 <div class="content-section" >
@@ -37,9 +44,9 @@
             <p class="test-secondary"> {{profile.location }} </p>
         </div>    
     </div>
-</div>
+</div> -->
 
-<h2 align="center"> Our Menu </h2> 
+<!-- <h2 align="center"> Our Menu </h2> 
 
 <div class="row row-cols-1 row-cols-md-4 g-4">
        
@@ -94,7 +101,7 @@
           </div>
         </div>
       </div>
-  </div>
+  </div> -->
 
 
 {% endblock content%}

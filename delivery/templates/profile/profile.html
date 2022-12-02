@@ -2,29 +2,114 @@
 {% load bootstrap5 %}
 {% block content %}
 {% load static %}
+{% load cloudinary %}
 
 
-
-
-
-<div class="content-section" >
-    <div class="static">
-        <a href="{% url 'edit_profile' %}"> Edit Profile </a>
-        <img class="rounded-circle account-img" style="width: 10%;" src=" {{ photo.url }} " alt="">
-        <img class="rounded-circle account-img" style="width: 10%;" src="/static/images/burger and chips.jpg" alt="">
+  <section style="background-color: #eee;">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col">
+          <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+            <ol class="breadcrumb mb-0">
+              <li class="breadcrumb-item"><a href="/">Home</a></li> 
+              <a class="breadcrumb-item" style="margin-left: 5%;" href="{% url 'edit_profile' %}"> Edit Profile </a>             
+              <li class="breadcrumb-item"><a href="#">User</a></li>
+              <!-- <li  aria-current="page"> Profile for {{user.username}} </li> -->
+              <li class="breadcrumb-item"><a href="accounts/logout">logout</a></li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card mb-4">
+            <div class="card-body text-center">
+              <!-- <img class="rounded-circle account-img" style="width: 10%;" src=" {{ user.profile.image.url }} " alt=""> -->
+              <img src={{ user.profile.image.url }} 
+                class="rounded-circle img-fluid" style="width: 150px;" alt=" " >
+              <h5 class="my-3"> Profile for {{user.username}}</h5>
+              
+             
+            </div>
+          </div>
         
-        <div class="static-body">
+        </div>
+        <div class="col-lg-8">
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Full Name</p>
+                </div>
+                <div class="col-sm-9">
+                  <h5 class="my-3"> {{user.profile.full_name }}</h5>
+                  <!-- <p class="text-muted mb-0">{{user.full_name }} </p> -->
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Email</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{user.email }} </p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Mobile Number</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{user.profile.mobile_number }}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Mobile</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{user.profile.mobile_number }}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Location</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{user.profile.location }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </section>  
+
+
+  <!-- <div class="content-section" >
+    <div class="static">
+        <a style="margin-left: 5%;" href="{% url 'edit_profile' %}"> Edit Profile </a>
+        <img class="rounded-circle account-img" style="width: 10%;" src=" {{ user.profile.image.url }} " alt=""> -->
+        <!-- <img class="rounded-circle account-img" style="width: 10%;" src="/static/images/burger and chips.jpg" alt="/static/images/4691440_unsplash_icon.png"> -->
+        
+        <!-- <div class="static-body" style="margin-left: 10%;">
           <h1> {{user.username}}</h1>
-          <h2> {{ user.full_name }}</h2>
-            <h2 class="account-heading"> {{ user.full_name }} </h2>
-            <p class="test-secondary"> {{user.mobile_number }} </p>
+          <h2> {{ request.user.full_name }}</h2>
+            <h2 class="account-heading"> {{ user.profile.full_name }} </h2>
+            <p class="test-secondary"> {{user.profile.mobile_number }} </p>
             <p class="test-secondary"> {{user.email }} </p>
-            <p class="test-secondary"> {{ user.photo}} </p>
-            <p class="test-secondary"> {{user.location }} </p>
+            
+            <p class="test-secondary"> {{user.profile.location }} </p>
             <p class="test-secondary"> {{user.profile }} </p>
         </div>    
     </div>
-</div>
+</div> -->
 
 <!-- <link rel="stylesheet" href="/static/css/styles.css">
 
@@ -45,7 +130,7 @@
     </div>
 </div> -->
 
-<h2 align="center"> Our Menu </h2> 
+<!-- <h2 align="center"> Our Menu </h2> 
 
 <div class="row row-cols-1 row-cols-md-4 g-4">
        
@@ -100,7 +185,7 @@
           </div>
         </div>
       </div>
-  </div>
+  </div> -->
 
 
 {% endblock content%}

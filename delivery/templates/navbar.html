@@ -1,5 +1,10 @@
 {% load static%}
 
+<link href='{% static "./css/styles.css" %}' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <ul class="nav justify-content-end" style="margin-right: 20px;">
         <li class="nav-item">
@@ -8,34 +13,80 @@
         <li class="nav-item">
           <a class="nav-link" style="color: black; font-weight: bolder;" href="about us"> About Us</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" style="color: black; font-weight: bolder;" href="profile"> Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="color: black; font-weight: bolder;" href="#"> {{request.user.username}} is logged in</a>
-        </li>
+        
+        <!-- <li class="nav-item">
+          <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>{{order.get_cart_item}}</b></span></h4>
+          </li>   -->
+        
         
         {% if user.is_authenticated %}
         <li class="nav-item">
+          <!-- <a class="nav-link" style="color: black; font-weight: bolder;" href="#"> {{request.user.username}} is logged in</a> -->
+        </li>
+        {% if user.is_vendor %}  
+        <li class="nav-item">
+          <!-- <a class="nav-link" style="color: black; font-weight: bolder;" href="profile"> Profile for {{request.user.username}} </a> -->
+          <a class="nav-link" style="color: black; font-weight: bolder;" href="{% url 'vendor' %}"> Profile for {{request.user.username}} </a>
+        </li>
+        {% endif %}
+        {% if user.is_rider %}  
+        <li class="nav-item">
+          <!-- <a class="nav-link" style="color: black; font-weight: bolder;" href="profile"> Profile for {{request.user.username}} </a> -->
+          <a class="nav-link" style="color: black; font-weight: bolder;" href="{% url 'rider' %}"> Profile for {{request.user.username}} </a>
+        </li>
+        {% endif %}
+        {% if user.is_customer %}  
+        <li class="nav-item">
+          <!-- <a class="nav-link" style="color: black; font-weight: bolder;" href="profile"> Profile for {{request.user.username}} </a> -->
+          <a class="nav-link" style="color: black; font-weight: bolder;" href="{% url 'customer' %}"> Profile for {{request.user.username}} </a>
+        </li>
+        {% endif %}
+        {% if user.is_superuser %}  
+        <li class="nav-item">
+          <!-- <a class="nav-link" style="color: black; font-weight: bolder;" href="profile"> Profile for {{request.user.username}} </a> -->
+          <a class="nav-link" style="color: black; font-weight: bolder;" href="{% url 'adminpage' %}"> Profile for {{request.user.username}} </a>
+        </li>
+        {% endif %}
+        <li class="nav-item">
           <a class="nav-link" style="color: black; font-weight: bolder; " href="accounts/logout"> logout </a>
         </li>
+
+
+        <li class="nav-item">
+          <a class="nav-link" style="color: black; font-weight: bolder; " href="{% url 'store' %}"> Cart {{request.session.cart|length}}</i> </a>
+          <!-- <p id="cart-total">{{request.session.cart|length}}</p> -->
+        </li>
+
+        <!-- <li class="nav-item">
+          <h4> <span class="price" style="color:black"  href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i> <b></b></span></h4>
+          <p id="cart-total">0</p>
+          </li>  -->
+
+          {% if user.is_superuser %}  
+
+          <li class="nav-item">
+            <a class="nav-link" style="color: black;  font-weight: bolder;" href="{%url 'approval'%}">Admin Approval</a>
+          </li>
+
+          {% endif %}
+        
         {% else %}
         <li class="nav-item">
-          <a class="nav-link" style="color: black;  font-weight: bolder;" href="accounts/login">Login </a>
+          <a class="nav-link" style="color: black;  font-weight: bolder;" href="login">Login </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" style="color: black; font-weight: bolder; " href="register"> Signup </a>
         </li>
-        <div class="form-inline my-2 my-lg-0">
-               
-                  
-          <a href="{% url 'cart' %}">
-              <!-- <img  id="cart-icon" src="{% static 'images/cart.png' %}"> -->
-              <img  src="/static/images/6+cart.png" alt="">
-            </a>
-          <p id="cart-total">0</p>
-         
-        </div>
+
+        <li class="nav-item">
+          <a class="nav-link" style="color: black; font-weight: bolder; " href="{% url 'store' %}" > Cart</a>
+          <p id="cart-total">{{value.quantity}}</p>
+        </li>
+        <!-- <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+        </ul> -->
+        <!-- <i class="fa fa-shopping-cart"></i>  -->
         {% endif %}
         
        
@@ -43,3 +94,4 @@
       
 </body>
 </html>
+
