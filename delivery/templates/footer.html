@@ -6,6 +6,8 @@
     <!-- Footer -->
     
     <link href='{% static "./css/styles.css" %}' rel='stylesheet' type='text/css' >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/1571922105.js" crossorigin="anonymous"></script>
     
     <footer class="text-center text-white" style="background-color: rgba(0, 0, 0, 0.699)">
       <!-- Grid container -->
@@ -25,15 +27,26 @@
             <!-- Grid column -->
             <div class="col-md-2">
               <h6 class="text-uppercase font-weight-bold">
-                <a href="home" class="text-white"> Home</a>
+                <a href="/" class="text-white"> Home</a>
               </h6>
             </div>
             <!-- Grid column -->
   
             <!-- Grid column -->
+
+            {% if user.is_authenticated %}
             <div class="col-md-2">
               <h6 class="text-uppercase font-weight-bold">
-                <a href="accounts/register"class="text-white">Signup</a>
+                <a href="accounts/logout" class="text-white">logout</a>
+              </h6>
+            </div>
+            {% else %}
+
+
+            <div class="col-md-2">
+              <h6 class="text-uppercase font-weight-bold">
+                <a href="register"class="text-white">Signup</a>
+                
               </h6>
             </div>
             <!-- Grid column -->
@@ -45,6 +58,7 @@
               </h6>
             </div>
             <!-- Grid column -->
+            {% endif %} 
   
             <!-- Grid column -->
             <div class="col-md-2">
@@ -74,40 +88,23 @@
             </div>
           </div>
         </section>
-        <!-- Section: Text -->
+        <!-- End Section: Text -->
   
         <!-- Section: Social -->
 
         
         <section class="text-center mb-5">
-          <!-- <a href="" class="text-white me-4">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="" class="text-white me-4">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="" class="text-white me-4">
-            <i class="fab fa-google"></i>
-          </a>
-          <a href="" class="text-white me-4">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="" class="text-white me-4">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="" class="text-white me-4">
-            <i class="fab fa-github"></i>
-          </a> -->
-          <div class="card-footer text-muted">
-            <!-- <h3>Contact us</h3> -->
-            <!-- <img src="https://img.icons8.com/doodle/48/null/facebook-circled.png"/> -->
+   
+        
+          <div class="card-footer text-muted">          
+            
               <a style="margin-right:15px ;" href="https://twitter.com" target="blank"><i class="fab fa-twitter"></i></a>
               <a style="margin-right:15px ;" href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>         
               <a style="margin-right:15px ;" href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
               <a style="margin-right:15px ;" href="https://pinterest.com" target="_blank"><i class="fab fa-pinterest"></i></a> 
           </div>
         </section>
-        <!-- Section: Social -->
+        <!-- End Section: Social -->
       </div>
       <!-- Grid container -->
   
@@ -116,10 +113,8 @@
            class="text-center p-3"
            style="background-color: rgba(0, 0, 0, 0.2)"
            >
-        © 2022 Copyright:
-        <!-- <a class="text-white" href="https://mdbootstrap.com/"
-           >MDBootstrap.com</a -->
-          
+        © 2022 Copyright:      
+         
       </div>
       <!-- Copyright -->
     </footer>

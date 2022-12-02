@@ -1,0 +1,45 @@
+{% extends 'moto/base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block styles %}
+{% bootstrap_css %}
+
+<link href='{% static "./css/styles.css" %}' rel='stylesheet' type='text/css'>
+{% endblock %}
+</head>
+
+<body>    
+{% block content %} 
+
+<div class="card-group">
+    <div class="card" style="border: none; max-width: 50%x; margin-left: 10px; margin-right: 20px; margin-top: 20px; max-height: 100px; " >
+      <img src="/static/images/erik-mclean-Z41_IZ6Ctis-unsplash.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Customer</h5>
+        <p class="card-text">Sign up as a Customer</p>
+        <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+      </div>
+    </div>
+    <div class="card">
+      <img src="/static/images/wasa-crispbread-TOkbYy1iVnE-unsplash.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"> Food Vendor</h5>
+        <p class="card-text"> Sign up as Food vendor</p>
+        <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+      </div>
+    </div>
+    <div class="card">
+      <img src="/static/images/paolo-feser-1MFqJzNUwOM-unsplash.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"> Rider</h5>
+        <p class="card-text">Sign up as a Rider</p>
+        <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+      </div>
+    </div>
+  </div>
+
+
+
+
+{% endblock %}

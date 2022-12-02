@@ -47,9 +47,12 @@ INSTALLED_APPS = [
     'delivery',
     'cloudinary',
     'bootstrap5',
+    # 'cart',
     
 
 ]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -74,6 +77,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 'cart.context_processor.cart_total_amount',
             ],
         },
     },
@@ -168,3 +172,8 @@ cloudinary.config(
   api_key = "471245994175868", 
   api_secret = "CAS-yrgWOfJHRN1IYD58181C8Sw", 
 )
+
+
+# CART_SESSION_ID = 'cart'
+
+APPEND_SLASH=False 

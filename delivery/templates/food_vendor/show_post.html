@@ -1,0 +1,67 @@
+{%extends "moto/base.html"%}
+{% load bootstrap5 %}
+{% block content %}
+{% load static %}
+<!-- <link rel="stylesheet" href="static/images"> -->
+add posts
+
+<div class="row"  style="margin-left: auto; margin-right: auto;" align="center">
+    {% for product in products %}
+    <div class="col-md-6 mx-auto"> 
+
+          
+        <h5 class="card-title"> {{user.post.title}}</h5>
+          <img src="{{ post.picture.url }}" style='width: 400px;border-radius: 5px;;'class="card-img-top" alt="..." align="center"> <br><br>
+    </div>      
+  
+          <div> 
+            
+            <p class="card-text"> Caption: {{ post.post  }}  </p>
+            <p class="card-text"> Author: {{ post.author.user }} </p> 
+            <p class="card-text"><small class="text-muted">Posted on: {{post.price}} </small></p>   
+          </div>
+
+          <div>
+            {% for comment in post.comments.all %}
+            <p>{{ comment }}</p> - <small>{{ post.created_on }}</small>
+            {% empty %}
+            <p>No comments yet</p>
+            {% endfor %}
+          </div>
+
+          <div class="container">
+            <form method="POST"  action="comment"  class="form-group">
+             
+              {{ comment_form.as_p}} 
+              <input type="hidden" name="post_id" value="{{ post.id }}">
+              <button>Submit</button>
+            </form>
+
+            {% endfor %}
+
+{% endblock content %}
+
+
+<!-- <link rel="stylesheet" href="static/images"> -->
+
+<div class="row">
+    <!-- {% for product in products %} -->
+    <div class="col-lg-4">
+        <img class="img-fluid img-thumbnail" src="{{ post.picture.url}}" alt="" >
+        <!-- <img class="thumbail" src="{{ product.image.url}}"  alt=""> -->
+        <div class="box-element product">
+            <h6><strong>{{user.post.title}}</strong></h6>
+            <hr>
+            <button class="btn btn-outline-secondary add-btn"> <a style="text-decoration: none" href="{% url 'cart_add' product.id %}">Add To Cart</a></button>
+            <a class="btn btn-outline-success" href="{% url 'cart_clear' %}">Clear Cart</a>
+
+            <!-- <a class="btn btn-outline-success" href="#">View</a> -->
+            <h4 style="display: inline-block; float: right;" ><strong>Kes {{user.post.price|floatformat:2}}</strong></h4>            
+
+        </div>            
+    </div>
+    <!-- {% endfor %} -->
+</div>
+
+  
+   

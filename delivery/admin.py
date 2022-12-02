@@ -12,10 +12,23 @@ admin.site.register(Product)
 admin.site.register(Order)
 admin.site.register(OrderItem)
 admin.site.register(ShippingAddress)
-admin.site.register(Vendor)
-admin.site.register(Rider)
+
+
+
 admin.site.register(Admin)
 admin.site.register(Approvals)
+
+@admin.register(Rider)
+class RiderAdmin(admin.ModelAdmin):
+    fields = ('full_name', 'description', 'email', 'created_at', 'location', 'photo', 'approved' )
+
+
+@admin.register(Vendor)
+class VendorAdmin(admin.ModelAdmin):
+    fields = ('full_name', 'restaurant_name', 'description', 'email', 'created_at', 'location', 'photo', 'approved' )
+    # list_display = ()
+    # list_filter = ('full_name')
+    # ordering = ('created_at')
 
 
 

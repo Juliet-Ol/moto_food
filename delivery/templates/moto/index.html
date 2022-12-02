@@ -1,155 +1,155 @@
-<html>
-  <head>
-    {% extends 'moto/base.html' %}
-    {% load static %}
-    {% load bootstrap5 %}
 
-    {% block styles %}
-    {% bootstrap_css %}
-    <link href='{% static "./css/styles.css" %}' rel='stylesheet' type='text/css'>
-    {% endblock %}
-  </head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moto Food</title>
+  {% extends 'moto/base.html' %}
+  {% load static %}
+  {% load bootstrap5 %}
 
-  <body>    
-    {% block content %}
-    <!-- landing page section-->
 
-    <div>  
-      <div class="landing">  
-        <div class="landing text" >          
-          <h1 align="center" style="color: white; padding-top: 15%;"> Moto Food Delivery </h1>  
-          <h3 align="center" style="color: white;"> food at your finger tips</h3>
-               
-        </div> 
-      </div>         
-    </div>
-    
-    
-    <!-- About us section -->
-    
+  {% block styles %}
+  {% bootstrap_css %}
+  <link href='{% static "./css/styles.css" %}' rel='stylesheet' type='text/css'>
+  <script type="text/javascript"> 
+  var user = '{{request.user}}' 
 
-    <section class="about us">
-      
-      <h1 align="center" style="margin-top:70px ;">About Us</h1>
-
-      <p align="center"> We are a food delivery app. We give business opportunities to food vendors 
-        and riders. <br> Food vendors benefit from showcasing and posting  the variety of dishes 
-        they make <br> and <br> the riders on the other hand are privileged to deliver the meals.</p>
   
-        <p align="center"> Where Customers have a wide range of food to choose from depending on there taste <br>
-         or craving and have it delivered at there door step.</p>
-
-      <div class="card mb-3" style="max-width: 100%x; margin-left: 10px; margin-right: 20px; margin-top: 20px; border: none;">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img src="/static/images/burger and chips.jpg" class="card-img" alt="...">
-          </div>
-          <div class="col-md-8" style="margin-top: 30px;">
-            <div class="card-body">
-              <h5 class="card-title">Customers</h5>
-              <p class="card-text">Customers get there favorite food delivered to them at there door step.</p>
-              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-            </div>
-          </div>
-        </div>
-      </div>  
-
-      <div class="card mb-3" style="max-width: 100%; margin-left: 10px; margin-right: 20px; margin-top: 30px; border: none;">
-        <div class="row no-gutters">
-
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">Vendors</h5>
-              <p class="card-text">A place where vendors get to sell there food and have it delivered.</p>
-              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <img src="/static/images/jason-jarrach-7hO3yb3EzcY-unsplash.jpg" class="card-img" alt="...">
-          </div>
-          
-        </div>
-      </div>
-
-      <div class="card mb-3" style="max-width: 100%; margin-right: 20px; margin-left: 10px; border: none;">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img src="/static/images/delivery.jpg" class="card-img" alt="...">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title"> Riders</h5>
-              <p class="card-text">Riders get to deliver food and earn extra cash.</p>
-              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-            </div>
-          </div>
-        </div>
-      </div>
+</script>
+  {% endblock %}
 
 
-    </section>
+</head>
+<body>
+  <!-- {% include 'navbar.html'%} -->
+  {% block content %}
+  <!-- landing page section-->
 
-    <!-- some of the vendors -->
+  <div>  
+    <div class="landing">  
+      <div class="landing text" >          
+        <h1 align="center" style="color: white; padding-top: 15%;"> Moto Food Delivery </h1>  
+        <h3 align="center" style="color: white;"> food at your finger tips</h3>
+             
+      </div> 
+    </div>         
+  </div>
+  
+  
+  <!-- About us section -->
+
+  
+  
+
+  <section class="about us">
     
-    <h1 style="margin-top: 60px;" align="center"> Some of our vendors</h1>
+    <h1 align="center" style="margin-top:70px ;">About Us</h1>
 
-    <div class="card-group" style="margin-top: 20px;">
-      <div class="card" style="margin-right: 20%; margin-left: 20px; border: none;">
-        <div class="ratio ratio-1x1 rounded-circle overflow-hidden" style="padding-right: 20%; margin-right: 10px;">
-          <img src="/static/images/griller.jpg " class="card-img-top img-cover" alt="">
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">The Griller</h5>
-            <p class="card-text"> Be it red or white meet we have got you covered.</p>
-          <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-        </div>
-      </div>
-      <div class="card" style="border: none;">
-        <div class="ratio ratio-1x1 rounded-circle overflow-hidden"style="padding-right: 20%; margin-right: 10px;">
-          <img src="/static/images/ke-vin-szQFiGZH8wU-unsplash.jpg " class="card-img-top img-cover" alt="">
-        </div>
-        <div class="card-body">
-          <h5 class="card-title"> Home Taste</h5>
-            <p class="card-text"> We bring you dishes that are cooked and seasoned naturally.</p>
-          <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-        </div>
-      </div>
-      <div class="card"style="margin-left: 20%; margin-right: 20px; border:none; ">
-        <div class="ratio ratio-1x1 rounded-circle overflow-hidden"style="padding-right: 20%; margin-right: 10px;">
-          <img src="/static/images/burger.jpg " class="card-img-top img-cover" alt="">
-        </div>
-        <div class="card-body">
-          <h5 class="card-title"> Burger Land</h5>
-              <p class="card-text">We have assorted types of burgers for meat lovers or vegeterians.</p>
-          <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-        </div>
-      </div>
-    </div>
+    <p align="center"> We are a food delivery app. We give business opportunities to food vendors 
+      and riders. <br> Food vendors benefit from showcasing and posting  the variety of dishes 
+      they make <br> and <br> the riders on the other hand are privileged to deliver the meals.</p>
+
+      <p align="center"> Where Customers have a wide range of food to choose from depending on there taste <br>
+       or craving and have it delivered at there door step.</p>
 
 
-    
+       <div class="card-group" style="max-width: 100%x; margin-left: 10px; margin-right: 20px; margin-top: 20px; border: none;" >
+        <div class="card" style="margin-left:5px ; margin-right: 20px; border: none;">
+          <img class="card-img-top" src="/static/images/burger and chips.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Customers</h5>
+            <p class="card-text">Customers get there favorite food delivered to them at there door step.</p>
+          </div>
+        </div>
+        <div class="card" style="border: none;">
+          <img class="card-img-top" src="/static/images/jason-jarrach-7hO3yb3EzcY-unsplash.jpg"  alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Vendors</h5>
+            <p class="card-text">A place where vendors get to sell there food and have it delivered.</p>
+          </div>
+        </div>
+        <div class="card" style="margin-left:20px ; margin-right: 5px; border: none;">
+          <img class="card-img-top" src="/static/images/delivery.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Riders</h5>
+            <p class="card-text">Riders get to deliver food and earn extra cash.</p>
+          </div>
+        </div>
+      </div>     
 
-    </section>
-
-    <section class="footer" style="margin-top: 15%;">
-
-    {% include 'footer.html' %} 
 
   </section>
 
+  <!-- some of the vendors -->
+  
+  <h1 style="margin-top: 60px;" align="center"> Some of our vendors</h1>
 
-    {% endblock%}
-    
-    {% block scripts %}
-    {% bootstrap_css %}
+  <div class="card-group" style="margin-top: 20px;">
+    <div class="card" style="margin-right: 20%; margin-left: 20px; border: none;">
+      <div class="ratio ratio-1x1 rounded-circle overflow-hidden" style="padding-right: 20%; margin-right: 10px;">
+        <img src="/static/images/griller.jpg" class="card-img-top img-cover" alt="">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">The Griller</h5>
+          <p class="card-text"> Be it red or white meet we have got you covered.</p>          
+      </div>
+    </div>
+    <div class="card" style="border: none;">
+      <div class="ratio ratio-1x1 rounded-circle overflow-hidden"style="padding-right: 20%; margin-right: 10px;">
+        <img src="/static/images/ke-vin-szQFiGZH8wU-unsplash.jpg " class="card-img-top img-cover" alt="">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"> Home Taste</h5>
+          <p class="card-text"> We bring you dishes that are cooked and seasoned naturally.</p>
+      </div>
+    </div>
+    <div class="card"style="margin-left: 20%; margin-right: 20px; border:none; ">
+      <div class="ratio ratio-1x1 rounded-circle overflow-hidden"style="padding-right: 20%; margin-right: 10px;">
+        <img src="/static/images/burger.jpg " class="card-img-top img-cover" alt="">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"> Burger Land</h5>
+            <p class="card-text">We have assorted types of burgers for meat lovers or vegeterians.</p>
+      </div>
+    </div>
+  </div>
+
+
+  
+
+  </section>
+
+  <section class="footer" style="margin-top: 15%;">
+
+  {% include 'footer.html' %} 
+
+</section>
+
+
+  {% endblock%}
+  
+  {% block scripts %}
+  {% bootstrap_css %}
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    {%endblock%}
-    {% bootstrap_javascript %} 
-    
-        
-    
-   
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+  <script type="text/javascript"  src="{%static 'js/cart.js'%}"></script>
+  {%endblock%}
+  {% bootstrap_javascript %} 
 
-  </body>  
+  
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+

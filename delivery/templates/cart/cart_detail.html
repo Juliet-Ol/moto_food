@@ -1,0 +1,347 @@
+{%extends "moto/base.html"%}
+{% load bootstrap5 %}
+{% block content %}
+{% load static %}
+
+
+
+
+
+
+{% block title %}
+  <!-- Shopping Cart Details -->
+{% endblock %}
+
+
+
+
+{% load cart_tag %}
+
+<!-- Total Length :: {{request.session.cart|length}} -->
+
+<!-- Cart Detail: -->
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<div class="container bootstrap snippets bootdey">
+    <div class="col-md-9 col-sm-8 content">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                  <li><a href="#">Home</a></li>
+                  <li class="active">Cart</li>
+                </ol>
+            </div>
+        </div>
+
+
+<div class="row">
+  <div class="col-md-12">
+      <div class="panel panel-info panel-shadow">
+          <!-- <div class="panel-heading">
+              <h3>
+                  <img class="img-circle img-thumbnail" src="https://bootdey.com/img/Content/user_3.jpg">
+                  Matew darfkmoun
+              </h3>
+          </div> --> 
+          
+          <div class="panel-body"> 
+              <div class="table-responsive">
+              <table class="table">
+                  <thead>
+                  <tr>
+                      <th>Product</th>
+                      <!-- <th>Description</th> -->
+                       <th>Qty</th>
+                       <th>Increase/Decrease</th>
+                      <th>Price</th>
+                      <th>Total</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    {% for key,value in request.session.cart.items %}
+                      <tr>
+                          <!-- <td><img src="https://via.placeholder.com/400x200/FFB6C1/000000" class="img-cart"></td> -->
+                          <td><strong>{{ value.name }}</strong><p></p></td>
+                          <td>
+                          <form class="form-inline">
+                              <input class="form-control" type="text" value={{ value.quantity }}>
+                              <button rel="tooltip" class="btn btn-default"><i class="fa fa-pencil"></i></button>
+                              <a href="{% url 'item_clear' value.product_id %}" class="btn btn-primary"><i class="fa fa-trash-o"></i></a>
+                              <a href="{% url 'item_increment' value.product_id %}">Increament</a>
+                            <a href="{% url 'item_decrement' value.product_id %}">Decrement</a>
+                          </form>
+
+                          <!-- <form action="{% url 'item_decrement' value.product_id %}" method="post">
+        <input type="submit" value="Remove" />
+        {% csrf_token %}
+      </form>
+      <a href="{% url 'item_increment' value.product_id %}">Increament</a>
+      <a href="{% url 'item_decrement' value.product_id %}">Decrement</a> -->
+                          </td>
+                          <td>Ksh {{ value.price }}</td>
+                          <td>Ksh {{ value.price|multiply:value.quantity }}</td>
+                         
+                      </tr>
+                      <tr>
+                       
+                      </tr>
+                      <tr>
+                          <td colspan="6">&nbsp;</td>
+                      </tr>
+                      <!-- <tr>
+                          <td colspan="4" class="text-right">Total Product</td>
+                          <td>{{ value.price|multiply:value.quantity }}</td>
+                      </tr> -->
+                      <!-- <tr> -->
+                        {% endfor %} 
+                          <!-- <td colspan="4" class="text-right">Total Shipping</td>
+                          <td>{{cart_total_amount}}</td>
+                      </tr> -->
+                      <tr>
+                          <td colspan="4" class="text-right"><strong>Total</strong></td>
+                          <td>Ksh{{cart_total_amount}}</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+      </div>
+      <a href="{% url 'store' %}"class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Continue Shopping</a>
+      <a href="{% url 'checkout'%}" class="btn btn-primary pull-right">Go to checkout<span class="glyphicon glyphicon-chevron-right"></span></a>
+  </div>
+</div>
+</div>
+ </div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+<a class="btn btn-outline-dark" href="{% url 'store' %}">
+  &#x2190; Continue Shopping</a>
+
+
+<h1 align="center">Shopping Cart Details</h1> -->
+<table class="cart" align="center">
+<thead>
+  <tr>
+    <th>
+      Image
+    </th>
+    <th>
+      Product
+    </th>
+    <th>
+      Quantity
+    </th>
+     <th>
+      Increase/Decrease quantity
+    </th>
+    <th>
+      Price
+    </th>
+  </tr>
+</thead>
+<tbody>
+  {% for key,value in request.session.cart.items %}
+ 
+   <tr>
+    <td>
+      <a href="{{product.get_absolute_url}}">
+        <img src = "{% if product.image %}{{value.image.url}}% else %}{% static 'img/no_image.png' %}"{% endif %}>
+        <img class="img-fluid img-thumbnail" src="{{ product.image.url}}" alt="" >
+      </a>
+    </td>
+    <td>
+      {{ value.name }}
+    </td>
+    <td>
+      {{ value.quantity }}
+    </td>
+    <td>
+       <form action="{% url 'item_decrement' value.product_id %}" method="post">
+        <input type="submit" value="Remove" />
+        {% csrf_token %}
+      </form>
+      <a href="{% url 'item_increment' value.product_id %}">Increament</a>
+      <a href="{% url 'item_decrement' value.product_id %}">Decrement</a>
+    </td>
+    <td class="num">
+      {{ value.price }}
+    </td>
+     <td class="num">
+      Ksh {{value.price}}
+    </td>
+  </tr>
+  
+  
+  <tr>
+    <td>
+      Total
+    </td>
+    <td colspan="4">
+
+    </td>
+    <td class="num">
+      Ksh  {{ value.price|multiply:value.quantity }} -->
+      
+   
+      
+      
+
+     </td>
+  </tr>
+ 
+</tbody> -->
+
+
+      
+{% endfor %} 
+
+<a  class="btn btn-primary btn-lg btn-block" href="{% url 'checkout'%}"> Go to checkout</a>
+
+{{cart_total_amount}} to pay
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<div class="container bootstrap snippets bootdey">
+    <div class="col-md-9 col-sm-8 content">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                  <li><a href="#">Home</a></li>
+                  <li class="active">Cart</li>
+                </ol>
+            </div>
+        </div>
+
+
+<div class="row">
+  <div class="col-md-12">
+      <div class="panel panel-info panel-shadow">
+          <!-- <div class="panel-heading">
+              <h3>
+                  <img class="img-circle img-thumbnail" src="https://bootdey.com/img/Content/user_3.jpg">
+                  Matew darfkmoun
+              </h3>
+          </div> -->
+          <div class="panel-body"> 
+              <div class="table-responsive">
+              <table class="table">
+                  <thead>
+                  <tr>
+                      <th>Product</th>
+                      <!-- <th>Description</th> -->
+                      <th>Qty</th>
+                      <th>Price</th>
+                      <th>Total</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td><img src="https://via.placeholder.com/400x200/FFB6C1/000000" class="img-cart"></td>
+                          <td><strong>Product 1</strong><p></p></td> -->
+                          <td>
+                          <form class="form-inline">
+                              <input class="form-control" type="text" value="1">
+                              <button rel="tooltip" class="btn btn-default"><i class="fa fa-pencil"></i></button>
+                              <a href="#" class="btn btn-primary"><i class="fa fa-trash-o"></i></a>
+                          </form>
+                          </td>
+                          <td>{{ value.quantity }}</td>
+                          <td>Ksh{{ value.price }}</td>
+                      </tr>
+                      <tr>
+                       
+                      </tr>
+                      <tr>
+                          <td colspan="6">&nbsp;</td>
+                      </tr>
+                      <tr>
+                          <td colspan="4" class="text-right">Total Product</td>
+                          <td>{{ value.price|multiply:value.quantity }}</td>
+                      </tr>
+                      <tr>
+                          <td colspan="4" class="text-right">Total Shipping</td>
+                          <td>{{cart_total_amount}}</td>
+                      </tr>
+                      <tr>
+                          <td colspan="4" class="text-right"><strong>Total</strong></td>
+                          <td>{{cart_total_amount}}</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+      </div>
+      
+      <a class="btn btn-outline-dark" href="{% url 'store' %}">
+    &#x2190; Continue Shopping</a>
+      <a href="#" class="btn btn-primary pull-right">Next<span class="glyphicon glyphicon-chevron-right"></span></a>
+  </div>
+</div>
+</div>
+</div>
+
+
+
+<!-- .img-cart {
+  display: block;
+  max-width: 50px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+table tr td{
+  border:1px solid #FFFFFF;    
+}
+
+table tr th {
+  background:#eee;    
+}
+
+.panel-shadow {
+  box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
+} -->
