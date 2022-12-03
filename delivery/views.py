@@ -35,7 +35,11 @@ def add_to_cart(request):
     product = Product.objects.get(id=product_id)
 
     if request.user.is_authenticated:
-        cart, created = Cart.objects.get_or_create
+        cart, created = Cart.objects.get_or_create(user=request.user, completed=False)
+        cartitem, created = CartItem.objects.get_or_create(cart=cart, product=product)
+        cartitem.quantity += 1
+        cartitem.save()
+        print(cartitem)
 
     return JsonResponse("it is working", safe=False)
 
