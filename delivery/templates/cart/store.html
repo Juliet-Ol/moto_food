@@ -5,14 +5,16 @@
 <!-- <link rel="stylesheet" href="static/images"> -->
   <div class="container">
     <div class="row">
-        {% for product in products %}        
-        <div class="col-lg-4">
-            <img class="img-fluid img-thumbnail" style="width: 21rem; height: 18rem;"src="{{ product.image.url}}" alt="" >
+
+      {% for product in products %}  
+                    
+        <div class="col-lg-4" id="productContainer">
+            <img class="img-fluid img-thumbnail" style="width: 21rem; height: 18rem;"src= "{{ product.image.url}}"  alt="" >
             <!-- <img class="thumbail" src="{{ product.image.url}}"  alt=""> -->
             <div class="box-element product">
-                <h6><strong>{{product.name}}</strong></h6>
+                <h6><strong>Food: </strong></h6>
                 <hr>
-                <button class="btn btn-outline-secondary add-btn"> <a style="text-decoration: none" href="#">Add To Cart</a></button>          
+                <button value="{{product.id}}" > Add To Cart</a></button>          
                             
 
                 <!-- <a class="btn btn-outline-success" href="#">View</a> -->
@@ -22,8 +24,8 @@
         </div>
 
         
-        
         {% endfor %}
+       
     </div>
   </div>
 
@@ -33,8 +35,8 @@
 
 
 
-
-
+<!-- <a style="text-decoration: none" href="#"></a> -->
+<!-- class="btn btn-outline-secondary add-btn update-cart" -->
 
 <!-- {% url 'cart_add' product.id %} -->
 
@@ -77,3 +79,23 @@
       </div>
     </div>
   </section> -->
+
+
+
+  <!-- <div class="container">
+    <div class="row">
+               
+        <div class="col-lg-4">
+            <img class="img-fluid img-thumbnail" style="width: 21rem; height: 18rem;"src="{{ product.image.url}}" alt="" > -->
+            <!-- <img class="thumbail" src="{{ product.image.url}}"  alt=""> -->
+            <!-- <div class="box-element product">
+                <h6><strong>{{product.name}}</strong></h6>
+                <hr>
+                <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart"> <a style="text-decoration: none" href="#">Add To Cart</a></button>           -->
+                            
+
+                <!-- <a class="btn btn-outline-success" href="#">View</a> -->
+                <!-- <h5 style="display: inline-block; float: right;" ><strong>Kes {{product.price|floatformat:2}}</strong></h5>            
+
+            </div>            
+        </div> -->
