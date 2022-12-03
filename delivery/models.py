@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from  cloudinary.models import CloudinaryField
@@ -23,7 +24,7 @@ class Product(models.Model):
     # vendor = models.ForeignKey(Vendor, on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=200)
     price = models.FloatField()
-    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    image = models.ImageField( upload_to='profile_pics', default='')
    
     description = models.TextField(blank=True)
     
@@ -31,17 +32,17 @@ class Product(models.Model):
     def __str__(self):
         return self.name  
 
-    def __str__(self):
-        return self.name   
+    # def __str__(self):
+    #     return self.name   
 
-    @property
-    def imageURL(self):
-        try:
-            url = self.image.url
+    # @property
+    # def imageURL(self):
+    #     try:
+    #         url = self.image.url
 
-        except:  
-            url = ''
-        return url       
+    #     except:  
+    #         url = ''
+    #     return url       
 
 
 
@@ -84,20 +85,7 @@ class Order(models.Model):
     #     return total       
 
     
-class OrderItem(models.Model): 
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
-    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
-    quantity = models.IntegerField(default=0, null=True, blank=True)
-    date_added = models.DateField(auto_now_add=True)
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True) 
-    #image
-    # def __str__(self):
-    #     return str(self.id)   
-    # 
-    @property
-    def get_total(self):
-        total = self.product.price * self.quantity
-        return total    
+ 
 
 class ShippingAddress(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
@@ -221,6 +209,35 @@ class Post (models.Model):
     # food_rating = models.IntegerField(default=0)        
 
 
+class Cart(models.Model):
+    id = models.UUIDField(default=uuid.uuid4, primary_key=True,)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    completed = models.BooleanField(default=False)
+    created_at = models.DateTimeField(default=datetime.now)
+
+    def __str__(self):
+        return str(self.id)
+
+
+class CartItem(models.Model): 
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='Items', null=True)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='cartItems')
+    # order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
+    quantity = models.IntegerField(default=0, null=True, blank=True)
+    # date_added = models.DateField(auto_now_add=True)
+    # customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True) 
+    #image
+
+
+
+    def __str__(self):
+        return self.product.name   
+    
+    # @property
+    # def get_total(self):
+    #     total = self.product.price * self.quantity
+    #     return total           
+
 
 
 
@@ -239,9 +256,7 @@ class Post (models.Model):
 #     # user = models.OneToOneField(User, on_delete=models.CASCADE, default='')       
 
 
-# class Cart(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     created_at = models.DateTimeField(default=datetime.now)
+
 
 # class CartItem(models.Model):
 #     product = models.ForeignKey(Product, on_delete=models.CASCADE)
