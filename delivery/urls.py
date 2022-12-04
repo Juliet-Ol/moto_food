@@ -19,7 +19,7 @@ urlpatterns = [
     path('store/', views.store, name='store'),
     path('cart/', views.cart, name='cart'),
     path('add_to_cart', views.add_to_cart, name='add_to_cart'),
-    # path('checkout/', views.checkout, name='checkout'),
+    path('checkout/', views.checkout, name='checkout'),
     path('approval/', views.approval, name='approval'),
     # path('update_item/', views.updateItem, name='update_item'),
     

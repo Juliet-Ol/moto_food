@@ -40,10 +40,10 @@
                           <td>
                           <form class="form-inline">
                               <input class="form-control" type="text" value={{ item.quantity }}>
-                              <button rel="tooltip" class="btn btn-default"><i class="fa fa-pencil"></i></button>
-                              <a href="#" class="btn btn-primary"><i class="fa fa-trash-o"></i></a>
-                              <a href="#">Increament</a>
-                            <a href="#">Decrement</a>
+                              <!-- <button rel="tooltip" class="btn btn-default"><i class="fa fa-pencil"></i></button> -->
+                              <!-- <a href="#" class="btn btn-primary"><i class="fa fa-trash-o"></i></a> -->
+                              <!-- <a href="#">Increament</a> -->
+                            <!-- <a href="#">Decrement</a> -->
                           </form>
 
                       
@@ -64,7 +64,7 @@
                       <tr>
                           <td colspan="4" class="text-right"><strong>Total{{cart.total_price}}</strong></td>
                           <td>  Ksh {{cart.total_price}}</td>
-                          <button>Pay</button>
+                          <!-- <button>Pay</button> -->
                       </tr>
                   </tbody>
               </table>
@@ -72,7 +72,7 @@
       </div>
       </div>
       <a href="{% url 'store' %}"class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Continue Shopping</a>
-      <a href="#" class="btn btn-primary pull-right">Go to checkout<span class="glyphicon glyphicon-chevron-right"></span></a>
+      <a href="{%url 'checkout'%}" class="btn btn-primary pull-right">Go to checkout<span class="glyphicon glyphicon-chevron-right"></span></a>
   </div>
 </div>
 </div>

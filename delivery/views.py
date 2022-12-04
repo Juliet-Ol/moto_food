@@ -44,14 +44,34 @@ def add_to_cart(request):
     product_id = data["id"]
     product = Product.objects.get(id=product_id)
 
+
     if request.user.is_authenticated:
         cart, created = Cart.objects.get_or_create(user=request.user, completed=False)
         cartitem, created = CartItem.objects.get_or_create(cart=cart, product=product)
         cartitem.quantity += 1
         cartitem.save()
+
+        num_of_items = cart.num_of_items
         print(cartitem)
 
-    return JsonResponse("it is working", safe=False)
+    return JsonResponse(num_of_items, safe=False)
+
+
+def checkout(request):
+    # if request.method == 'POST':
+    # if request.user.is_autheticated:
+    # if request.user.customer:
+    #     customer = request.user.customer
+    #     order, created = Order.objects.get_or_create(customer=customer, complete=False)
+    #     items = order.orderitem_set.all()
+    #     cartItems = order.get_cart_items
+    # else:
+    #     items = []  
+    #     order ={'get_cart_total':0, 'get_cart_items':0,}
+    #     cartItems = order['get_cart_items']
+
+    context = {}
+    return render(request,'cart/checkout.html', context)       
 
 
 
