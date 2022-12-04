@@ -52,10 +52,20 @@
         </li>
 
 
-        <li class="nav-item">
-          <a class="nav-link" style="color: black; font-weight: bolder; " href="{% url 'store' %}"> Cart {{request.session.cart|length}}</i> </a>
+        <!-- <li class="nav-item"> -->
+          <!-- <a class="nav-link" style="color: black; font-weight: bolder; " href="{% url 'store' %}"> Cart {{request.session.cart|length}}</i> </a> -->
           <!-- <p id="cart-total">{{request.session.cart|length}}</p> -->
-        </li>
+        <!-- </li> -->
+
+         <li class="nav-item">
+          <a class="nav-link" style="color: black; font-weight: bolder;" id="num_of_items" href="{% url 'cart' %}"> Cart {{cart.num_of_items}}</a>
+          
+            
+          
+          <!-- <p id="cart-total">{{request.session.cart|length}}</p> -->
+        </li> 
+
+
 
         <!-- <li class="nav-item">
           <h4> <span class="price" style="color:black"  href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i> <b></b></span></h4>
@@ -78,10 +88,10 @@
           <a class="nav-link" style="color: black; font-weight: bolder; " href="register"> Signup </a>
         </li>
 
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" style="color: black; font-weight: bolder; " href="{% url 'store' %}" > Cart</a>
           <p id="cart-total">{{value.quantity}}</p>
-        </li>
+        </li> -->
         <!-- <ul class="nav navbar-nav navbar-right">
           <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
           <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
