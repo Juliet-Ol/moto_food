@@ -205,7 +205,7 @@ class Post (models.Model):
     published_date = models.DateTimeField(auto_now_add=True)
     picture = CloudinaryField('image')
     price = models.FloatField(default=False)
-    customer = models.ForeignKey(Vendor, on_delete=models.SET_NULL, null=True, blank=True) 
+    # author = models.ForeignKey(Vendor, on_delete=models.SET_NULL, null=True, blank=True) 
     # food_rating = models.IntegerField(default=0)        
 
 
@@ -229,8 +229,9 @@ class Cart(models.Model):
     @property
     def num_of_items(self):
         cartitems = self.cartitems.all()
-        quantity = sum([item.quantity for item in cartitems])  
-        return quantity       
+        return cartitems.count()
+        # quantity = sum([item.quantity for item in cartitems])  
+        # return quantity       
 
 
 class CartItem(models.Model): 

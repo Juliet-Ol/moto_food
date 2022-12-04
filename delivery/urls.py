@@ -15,11 +15,15 @@ urlpatterns = [
     path('profile', views.profile, name='profile'), #check on the url slash
     path('edit_profile/', views.edit_profile, name='edit_profile'),
     path('post/', views.post, name='post'), #check on the url slash
-    path('show_post', views.show_post, name='new_post'),
-    path('store/', views.store, name='store'),
+    # path('show_post', views.show_post, name='show_post'),
+    # path('new_post', views.post, name='new_post'),
+    path('store', views.store, name='store'),
     path('cart/', views.cart, name='cart'),
     path('add_to_cart', views.add_to_cart, name='add_to_cart'),
+    path('update_cart', views.update_cart, name='update_cart'),
     path('checkout/', views.checkout, name='checkout'),
+    path('post_checkout/', views.post_checkout, name='post_checkout'),
+    # path('checkout/<str:pk>', views.checkout, name='checkout'),
     path('approval/', views.approval, name='approval'),
     # path('update_item/', views.updateItem, name='update_item'),
     
@@ -55,20 +59,11 @@ if settings.DEBUG:
 
 
 
-# CartItem Urls
-# urlpatterns += [
-#     path('cart/', views.ListCart.as_view(), name='list-carts'),
-    # path('cart/<int:pk>/', views.DetailCart.as_view(), name='detail-cart'),
-    # path('cart/create/', views.CreateCart.as_view(), name='create-cart'),
-    # path('cart/<int:pk>/update/', views.Updatecart.as_view(), name='update-cart'),
-    # path('cart/<int:pk>/delete/', views.DeleteCart.as_view(), name='delete-cart'),
 
-    # path('cartitem/', views.ListCartItem.as_view(), name='list-cartitem'),
-    # path('cartitem/<int:pk>/', views.DetailCartItem.as_view(), name='detail-cartitem'),
-    # path('cartitem/create/', views.CreateItemCart.as_view(), name='create-cartitem'),
-    # path('cartitem/<int:pk>/update/', views.UpdateCartItem.as_view(), name='update-cartitem'),
-    # path('cartitem/<int:pk>/delete/', views.DeleteCartItem.as_view(), name='delete-cartitem'),
-# ]
+
+
+
+
 
 
 

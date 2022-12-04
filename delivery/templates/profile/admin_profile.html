@@ -3,8 +3,33 @@
 {% block content %}
 {% load static %}
 
+<link rel="stylesheet" href="/static/css/styles.css">
+<br><br>
+<h3 align="center">Admin Profile, Photo and posts</h3> <br><br>
+<div class="container">
+  <div class="content-section" >
+      <div class="static">
+          <a href="{% url 'edit_profile' %}"> Edit Profile </a>
+          <img class="rounded-circle account-img" style="width: 10%;" src=" {{ photo.url }} " alt="">
+          <img class="rounded-circle account-img" style="width: 10%;" src="/static/images/burger and chips.jpg" alt=""> Restaurant name
+          
+          <div class="static-body">
+              <h2 class="account-heading">Name {{ user.profile.full_name }} </h2>
+              <p class="test-secondary">Mobile Number: {{user.profile.mobile_number }} </p>
+              <p class="test-secondary"> Email: {{user.profile.email }} </p>
+              <p class="test-secondary"> Description: {{user.profile.description }} </p>
+              <p class="test-secondary"> Location: {{user.profile.location }} </p>
+              <p class="test-secondary">Approved: {{user.admin.approved}} </p>
+          </div>    
+      </div>
+  </div>
+</div>
 
-<div class="content-section" >
+
+
+
+
+<!-- <div class="content-section" >
     <div class="static">
         <a href="{% url 'edit_profile' %}"> Edit Profile </a>
         <img class="rounded-circle account-img" style="width: 10%;" src=" {{ photo.url }} " alt="">
@@ -18,15 +43,15 @@
             <p class="test-secondary"> {{profile.location }} </p>
         </div>    
     </div>
-</div>
+</div> -->
 
-<link rel="stylesheet" href="/static/css/styles.css">
 
-<h3>Admin Profile, Photo and posts</h3>
+
+<!-- <h3>Admin Profile, Photo and posts</h3>
 <div class="content-section" >
-    <div class="static">
+    <div class="static"> -->
         <!-- <a href="{% url 'edit_profile' %}"> Edit Profile </a> -->
-        <img class="rounded-circle account-img" style="width: 10%;" src=" {{ photo.url }} " alt="">
+        <!-- <img class="rounded-circle account-img" style="width: 10%;" src=" {{ photo.url }} " alt="">
         <img class="rounded-circle account-img" style="width: 10%;" src="/static/images/burger and chips.jpg" alt=""> Restaurant name
         
         <div class="static-body">
@@ -37,9 +62,9 @@
             <p class="test-secondary"> {{profile.location }} </p>
         </div>    
     </div>
-</div>
+</div> -->
 
-<h2 align="center"> Our Menu </h2> 
+<!-- <h2 align="center"> Our Menu </h2> 
 
 <div class="row row-cols-1 row-cols-md-4 g-4">
        
@@ -83,8 +108,8 @@
           <p> Ksh 1000</p>
         </div>
       </div>
-    </div>
-    <div class="col">
+    </div> -->
+    <!-- <div class="col">
         <div class="card" style="border: none; max-width: 100%x; margin-left: 10px; margin-right: 20px; margin-top: 20px; " >
           <img src="/static/images/ferks-guare-kiZKA2rZ8Y0-unsplash.jpg" class="card-img-top" alt="...">
           <div class="card-body">
@@ -94,7 +119,7 @@
           </div>
         </div>
       </div>
-  </div>
+  </div> -->
 
 
 {% endblock content%}

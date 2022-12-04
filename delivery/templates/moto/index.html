@@ -1,11 +1,11 @@
-
+{% extends 'moto/base.html' %}
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Moto Food</title>
-  {% extends 'moto/base.html' %}
+  
   {% load static %}
   {% load bootstrap5 %}
 
@@ -13,7 +13,7 @@
   {% block styles %}
   {% bootstrap_css %}
   <link href='{% static "./css/styles.css" %}' rel='stylesheet' type='text/css'>
-  <script type="text/javascript"  src="{%static './js/cart.js'%}"></script> 
+  <script type="text/javascript"  src="{%static 'script.js'%}"></script> 
   <script type="text/javascript"> 
   var user = '{{request.user}}' 
 

@@ -5,8 +5,9 @@
 <!-- <link rel="stylesheet" href="static/images"> -->
 add posts
 
+
 <div class="row"  style="margin-left: auto; margin-right: auto;" align="center">
-    {% for posts in post %}
+    {% for post in posts %}
     <div class="col-md-6 mx-auto"> 
 
           
@@ -17,8 +18,8 @@ add posts
           <div> 
             
             <p class="card-text"> Caption: {{ post.post  }}  </p>
-            <p class="card-text"> Author: {{ post.author.user }} </p> 
-            <p class="card-text"><small class="text-muted">Posted on: {{post.price}} </small></p>   
+            <p class="card-text"> Author: {{ author.user }} </p> 
+            <p class="card-text"><small class="text-muted">Price: {{post.price}} </small></p>   
           </div>
 
           <div>

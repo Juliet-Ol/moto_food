@@ -41,7 +41,7 @@
         <div class="panel-body">
           <div class="shadow-lg p-3 mb-5 bg-white rounded" >
 
-          <form  method="post" action="/store" enctype="multipart/form-data" >
+          <form  method="POST" action="" enctype="multipart/form-data" >
             {% csrf_token %}
             {{form.as_p}}
             
