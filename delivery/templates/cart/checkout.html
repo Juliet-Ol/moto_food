@@ -21,7 +21,7 @@
       <div class="col-md-4 order-md-2 mb-4">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <!-- <span class="text-muted">Your cart</span> -->
-          <h4> <a href="{% url 'store' %}"></a> <span class="price" style="color:black"><i class="fa fa-shopping-cart" ></i> <b>{{request.session.cart|length}}</b></span></h4>
+          <h4> <a href="{% url 'store' %}"></a> <span class="price" style="color:black"><i class="fa fa-shopping-cart" ></i> <b>Cart {{ cart.num_of_items }}</b></span></h4>
           
           <span class="badge badge-secondary badge-pill">3</span>
         </h4>
@@ -75,7 +75,7 @@
       </div>
       <div class="col-md-8 order-md-1">
         <h4 class="mb-3">Billing address</h4>
-        <form class="needs-validation" novalidate>
+        <form class="needs-validation" action="{% url 'post_checkout' %}" novalidate>
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="firstName">Full name</label>
@@ -85,13 +85,7 @@
                 Valid full name is required.
               </div>
             </div>
-            <!-- <div class="col-md-6 mb-3">
-              <label for="lastName">Last name</label>
-              <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                Valid last name is required.
-              </div>
-            </div> -->
+           
           </div>
   
           <div class="mb-3">

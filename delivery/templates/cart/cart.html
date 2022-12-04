@@ -8,197 +8,87 @@
     <div class="col-md-9 col-sm-8 content">
         <div class="row">
             <div class="col-md-12">
-                <ol class="breadcrumb">
-                  <li><a href="#">Home</a></li>
-                  <li class="active">Cart</li>
-                </ol>
+                <!-- <ol class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li class="active">Cart</li>
+                </ol> -->
             </div>
         </div>
+            <br><br>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-info panel-shadow">
 
 
-<div class="row">
-  <div class="col-md-12">
-      <div class="panel panel-info panel-shadow">
-         
-          
-          <div class="panel-body"> 
-              <div class="table-responsive">
-              <table class="table">
-                  <thead>
-                  <tr>
-                      <th>Food Name</th>                     
-                       <th>Quantity</th>                       
-                      <th>Unit Price</th>
-                      <th>Total</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                    {% for item in items %}
-                      <tr>
-                            <!-- <td><img class="img-fluid img-thumbnail" style="width: 21rem; height: 18rem;"src= "{{ product.image.url}}"  alt="" > </td> -->
-                          <td><strong>{{ item.product.name }}</strong><p></p></td>
-                          <td>
-                          <form class="form-inline">
-                              <input class="form-control" type="text" value={{ item.quantity }}>
-                              <!-- <button rel="tooltip" class="btn btn-default"><i class="fa fa-pencil"></i></button> -->
-                              <!-- <a href="#" class="btn btn-primary"><i class="fa fa-trash-o"></i></a> -->
-                              <!-- <a href="#">Increament</a> -->
-                            <!-- <a href="#">Decrement</a> -->
-                          </form>
-
-                      
-                          </td>
-                          <td>Ksh {{ item.product.price }}</td>
-                          <td>Ksh {{ item.price }}</td>
-                         
-                      </tr>
-                      <tr>
-                       
-                      </tr>
-                      <tr>
-                          <td colspan="6">&nbsp;</td>
-                      </tr>
-                     
-                        {% endfor %} 
-                          
-                      <tr>
-                          <td colspan="4" class="text-right"><strong>Total{{cart.total_price}}</strong></td>
-                          <td>  Ksh {{cart.total_price}}</td>
-                          <!-- <button>Pay</button> -->
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
-      </div>
-      </div>
-      <a href="{% url 'store' %}"class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Continue Shopping</a>
-      <a href="{%url 'checkout'%}" class="btn btn-primary pull-right">Go to checkout<span class="glyphicon glyphicon-chevron-right"></span></a>
-  </div>
-</div>
-</div>
- </div>
-
-  {% endblock %}
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Food Name</th>
+                                        <th>Quantity</th>
+                                        <th>Unit Price</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in items %}
+                                    <tr id="cart_item_{{item.product.id}}">
+                                        <!-- <td><img class="img-fluid img-thumbnail" style="width: 21rem; height: 18rem;"src= "{{ product.image.url}}"  alt="" > </td> -->
+                                        <td><strong>{{ item.product.name }}</strong>
+                                            <p></p>
+                                        </td>
+                                        <td>
+                                            <div class="form-inline">
+                                                <input id="qty_{{ item.product.id }}" class="form-control" type="text" value={{ item.quantity }}>
+                                                <!-- <button rel="tooltip" class="btn btn-default"><i class="fa fa-pencil"></i></button> -->
+                                                <!-- <a href="#" class="btn btn-primary"><i class="fa fa-trash-o"></i></a> -->
+                                                <button type="button" id="inc_{{ item.product.id }}" data-id="{{item.product.id}}" > Increase </button>  
+                                                <button type="button" id="dec_{{ item.product.id }}" data-id="{{item.product.id}}" > Decrease </button> 
+                                                
+                                                <!-- <a href="#">Increase</a> 
+                                                <a href="#">Decrease</a> -->
+                                            </div>
 
 
+                                        </td>
+                                        <td>Ksh {{ item.product.price }}</td>
+                                        <td data-unit_price="{{ item.product.price }}" id="item_price_{{ item.product.id }}">Ksh {{ item.price }}</td>
 
+                                    </tr>
 
+                                    {% endfor %}
 
-
-
-
-
-
-  <!-- <h3>cart</h3> -->
-  <!-- <img  src="/static/images/6+cart.png" alt=""> -->
-  
-  <!-- <div class="row">
-    <div class="col-lg-12">
-        <div class="box-element">
-            <a class="btn btn-outline-dark" href="{% url 'store' %}">
-            &#x2190; Continue Shopping</a>
-            <br>
-            <br>
-            <table class="table">
-                <tr>
-                    <th><h5>Items: <strong> {{order.get_cart_item}}</strong></h5></th>
-                    <th><h5>Total: <strong> {{order.get_cart_total|floatformat:2}}</strong></h5></th>
-                    <th>
-                        <a style="float: right; margin:5px" class="btn btn-success" href="#"> Checkout</a> -->
-                    <!-- </th> 
-                </tr>
-            </table>
-        </div>
-  <br>
-        <div class="box-element">
-            <div class="cart-row">
-                <div style="flex:2;">  </div>
-                <div style="flex:2;"><strong>Item</strong></div>
-                <div style="flex:1;"><strong>Price</strong></div>
-                <div style="flex:1;"><strong>Quantity</strong></div>
-                <div style="flex:1;"><strong>Total</strong> </div>
-                
-            </div> -->
-          
-  
-  <!-- {% for product in products %}
-            <div class="cart-row">
-                <div style="flex: 2;"> <img src="{{item.product.image.url}}" alt=""> </div>
-                <div style="flex: 2;"><p>{{item.product.name}}</p></div>
-                <div style="flex: 1;">{{item.product.price|floatformat:2}}</div>
-                <div style="flex: 1;">
-                    <p>x{{item.quantity}}</p>
-                    <div class="quantity">
-                        <img data-product={{product.product.id}} data-action="add" class="chq-quantity update-cart" src="{% static 'images/arrow-up.png'%}" alt="">
-                        <img data-product={{product.product.id}} data-action="remove"class="chq-quantity update-cart" src="{% static 'images/down-up.png'%}" alt="">
+                                    <tr>
+                                        <td colspan="4" class="text-right"><strong>Total</strong>
+                                        </td>
+                                        <td data-grand="{{cart.total_price}}" id="grand_total"> Ksh {{cart.total_price}}</td>
+                                       
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-                <div style="flex: 1;"><p>Kes {{item.get_total|floatformat:2}}</p> </div>
-                
+                <a href="{% url 'store' %}" class="btn btn-success"><span
+                        class="glyphicon glyphicon-arrow-left"></span>&nbsp;Continue Shopping</a>
+                <a href="{%url 'checkout'%}" class="btn btn-primary pull-right">Go to checkout<span
+                        class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
-  {% endfor %}
         </div>
     </div>
-  </div>   -->
+</div>
+
+
+{% endblock %}
 
 
 
-<!-- <link rel="stylesheet" href="/static/css/styles.css">
-
-<h3>cart</h3>
-<img  src="/static/images/6+cart.png" alt=""> -->
-
-<!-- <div class="row">
-  <div class="col-lg-12">
-      <div class="box-element">
-          <a class="btn btn-outline-dark" href="{% url 'store' %}">
-          &#x2190; Continue Shopping</a>
-          <br>
-          <br>
-          <table class="table">
-              <tr>
-                  <th><h5>Items: <strong> {{order.get_cart_item}}</strong></h5></th>
-                  <th><h5>Total: <strong> {{order.get_cart_total|floatformat:2}}</strong></h5></th>
-                  <th>
-                      <a style="float: right; margin:5px" class="btn btn-success" href="{% url 'checkout'%}"> Checkout</a>
-                  </th> 
-              </tr>
-          </table>
-      </div>
 
 
-<br>
 
-      <div class="box-element">
-          <div class="cart-row">
-              <div style="flex:2;">  </div>
-              <div style="flex:2;"><strong>Item</strong></div>
-              <div style="flex:1;"><strong>Price</strong></div>
-              <div style="flex:1;"><strong>Quantity</strong></div>
-              <div style="flex:1;"><strong>Total</strong> </div>
-              
-          </div> -->
-        
 
-<!-- {% for item in items %}
-          <div class="cart-row">
-              <div style="flex: 2;"> <img src="{{item.product.image.url}}" alt=""> </div>
-              <div style="flex: 2;"><p>{{item.product.name}}</p></div>
-              <div style="flex: 1;">{{item.product.price|floatformat:2}}</div>
-              <div style="flex: 1;">
-                  <p>x{{item.quantity}}</p>
-                  <div class="quantity">
-                      <img class="chq-quantity" src="{% static 'images/arrow-up.png'%}" alt="">
-                      <img class="chq-quantity" src="{% static 'images/down-up.png'%}" alt="">
-                  </div>
-              </div>
-              <div style="flex: 1;"><p>Kes {{item.get_total|floatformat:2}}</p> </div>
-              
-          </div>
 
-{% endfor %}
-      </div>
-  </div>
-</div> -->
 
 
