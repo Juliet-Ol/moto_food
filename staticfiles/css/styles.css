@@ -1,0 +1,108 @@
+
+/* .landingpage{
+  background-image: url(/static/images/burger\ and\ chips.jpg);
+} */
+
+
+.landing {
+ 
+    
+    filter: brightness(50%);
+    height: 650px;
+    margin-left: 5px; 
+    margin-right: 5px;  
+    background-position: center;    
+    background-size: cover; 
+    /* color: red; */
+    
+
+      
+  }
+
+  .page{
+    background: url(/static/images/Landingpage1.jpg);
+    color: #cb2027;
+    background-color: #cb2027;
+    
+  }
+
+ 
+
+
+
+  /* .backgound {
+    opacity: 0.6;
+  } */
+
+  /* landing. text {
+    color: white; 
+    padding-top: 15%;
+  } */
+
+
+  
+
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+  margin-right: 2px;
+  left: 50px;
+  margin-left: 7%;
+}
+  /* Add a hover effect if you want */
+.fa:hover {
+    opacity: 0.7;
+  }
+  
+  /* Set a specific color for each brand */
+  
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+  border-radius: 50%;
+  font-size: 20px;
+  padding: 5px;
+  
+  }
+    
+  
+  
+    
+  .fa-facebook {
+  background: #3B5998;
+  color: white;
+  border-radius: 50%;
+  font-size: 20px;
+  padding: 5px;
+    }
+    
+  .fa-instagram {
+  border-radius: 50%;
+  font-size: 20px;
+  padding: 5px;
+  background: #d6249f;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    box-shadow: 0px 3px 10px rgba(0,0,0,.25);
+    }
+       
+     
+     
+     
+     
+  .fa-pinterest {
+  background: #cb2027;
+  color: white;
+  border-radius: 50%;
+  font-size: 20px;
+  padding: 5px;
+  }
+  
+
+
+  
+ 
