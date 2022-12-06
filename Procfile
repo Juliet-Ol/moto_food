@@ -1,0 +1,1 @@
+web: gunicorn moto_food.wsgi --log-file -
