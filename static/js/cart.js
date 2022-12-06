@@ -1,4 +1,4 @@
-function getCookie(name) {
+function getToken(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
         const cookies = document.cookie.split(';');
@@ -13,7 +13,7 @@ function getCookie(name) {
     }
     return cookieValue;
 }
-const csrftoken = getCookie('csrftoken');
+const csrftoken = getToken('csrftoken');
 
 
 
@@ -26,12 +26,13 @@ for (var i = 0; i < updateBtns.length; i++) {
         console.log('productId:', productId, 'action:', action)
 
         console.log('USER:', user)
-        // if (user == 'AnonymousUser'){
-        //     console.log('User is not logged in')
-        // }else{
-        //     updateUserOrder(productId, action)
+        if (user == 'AnonymousUser'){
+            console.log('User is not logged in')
+        }else{
+            console.log('User is authenticated sending data...')
+            updateUserOrder(productId, action)
             
-        // }
+        }
     })
 }
 
@@ -56,14 +57,10 @@ function updateUserOrder(productId, action) {
 
         .then((data) => {
             document.getElementById("num_of_items").innerHTML = data
-            // console.log('data:', data)
+            console.log('data:', data)
             location.reload()
         });
 }
-
-
-
-
 
 
 // function updateUserOrder(productId, action){
@@ -144,5 +141,3 @@ function updateUserOrder(productId, action) {
 //         console.log(error)
 //     })
 // }
-
-

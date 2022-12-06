@@ -12,7 +12,9 @@
 
   {% block styles %}
   {% bootstrap_css %}
-  <link href='{% static "./css/styles.css" %}' rel='stylesheet' type='text/css'>
+
+
+  
   <script type="text/javascript"  src="{%static 'script.js'%}"></script> 
   <script type="text/javascript"> 
   var user = '{{request.user}}' 
@@ -29,12 +31,15 @@
   <!-- landing page section-->
 
   <div>  
-    <div class="landing">  
-      <div class="landing text" >          
+    <div class="landing"  > 
+      <!-- <div class="landingpage"  > -->
+
+      <div class="text" >          
         <h1 align="center" style="color: white; padding-top: 15%;"> Moto Food Delivery </h1>  
         <h3 align="center" style="color: white;"> food at your finger tips</h3>
              
-      </div> 
+      </div>
+    </div>
     </div>         
   </div>
   

@@ -4,8 +4,8 @@
 {% load static %}
 
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-<div class="container bootstrap snippets bootdey">
-    <div class="col-md-9 col-sm-8 content">
+<div class="container bootstrap snippets bootdey" style="margin-left:10rem ;">
+    <div class="col-md-9 col-sm-8 content" >
         <div class="row">
             <div class="col-md-12">
                 <!-- <ol class="breadcrumb">
@@ -16,9 +16,10 @@
         </div>
             <br><br>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="panel panel-info panel-shadow">
+        <div class="row" >
+            <div class="col-md-12" >
+                <div class="panel panel-info panel-shadow" >
+                    
 
 
                     <div class="panel-body">
@@ -41,11 +42,11 @@
                                         </td>
                                         <td>
                                             <div class="form-inline">
-                                                <input id="qty_{{ item.product.id }}" class="form-control" type="text" value={{ item.quantity }}>
+                                                <input id="qty_{{ item.product.id }}" class="form-control" type="text" value={{ item.quantity }} style="outline: 18rem;">
                                                 <!-- <button rel="tooltip" class="btn btn-default"><i class="fa fa-pencil"></i></button> -->
                                                 <!-- <a href="#" class="btn btn-primary"><i class="fa fa-trash-o"></i></a> -->
-                                                <button type="button" id="inc_{{ item.product.id }}" data-id="{{item.product.id}}" > Increase </button>  
-                                                <button type="button" id="dec_{{ item.product.id }}" data-id="{{item.product.id}}" > Decrease </button> 
+                                                <button style="margin-top: 1rem; margin-right: 1rem; margin-bottom: 1rem; border-radius: 10%;" type="button" id="inc_{{ item.product.id }}" data-id="{{item.product.id}}" > Increase </button>  
+                                                <button style="border-radius: 10%;" type="button" id="dec_{{ item.product.id }}" data-id="{{item.product.id}}" > Decrease </button> 
                                                 
                                                 <!-- <a href="#">Increase</a> 
                                                 <a href="#">Decrease</a> -->
@@ -63,7 +64,7 @@
                                     <tr>
                                         <td colspan="4" class="text-right"><strong>Total</strong>
                                         </td>
-                                        <td data-grand="{{cart.total_price}}" id="grand_total"> Ksh {{cart.total_price}}</td>
+                                        <td data-grand="{{cart.total_price}}" id="grand_total" > Ksh {{cart.total_price}}</td>
                                        
                                     </tr>
                                 </tbody>
@@ -71,7 +72,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="{% url 'store' %}" class="btn btn-success"><span
+                <a href="{% url 'store' %}" class="btn btn-success"  ><span
                         class="glyphicon glyphicon-arrow-left"></span>&nbsp;Continue Shopping</a>
                 <a href="{%url 'checkout'%}" class="btn btn-primary pull-right">Go to checkout<span
                         class="glyphicon glyphicon-chevron-right"></span></a>

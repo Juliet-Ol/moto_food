@@ -171,6 +171,7 @@ cloudinary.config(
   cloud_name = "dkcivjz16", 
   api_key = "471245994175868", 
   api_secret = "CAS-yrgWOfJHRN1IYD58181C8Sw", 
+  secure = True
 )
 
 

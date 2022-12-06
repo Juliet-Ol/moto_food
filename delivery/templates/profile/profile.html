@@ -6,60 +6,65 @@
 
 
   <section style="background-color: #eee;">
-    <div class="container py-5">
-      <div class="row">
-        <div class="col">
-          <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
-            <ol class="breadcrumb mb-0">
-              <li class="breadcrumb-item"><a href="/">Home</a></li> 
-              <a class="breadcrumb-item" style="margin-left: 5%;" href="{% url 'edit_profile' %}"> Edit Profile </a>             
-              <li class="breadcrumb-item"><a href="#">User</a></li>
-              <!-- <li  aria-current="page"> Profile for {{user.username}} </li> -->
-              <li class="breadcrumb-item"><a href="accounts/logout">logout</a></li>
-            </ol>
-          </nav>
-        </div>
-      </div>
+    <div class="container py-5">     
   
       <div class="row">
-        <div class="col-lg-4">
-          <div class="card mb-4">
-            <div class="card-body text-center">
+        <!-- <div class="col-lg-4"> -->
+          <!-- <div class="card mb-4">
+            <div class="card-body text-center"> -->
               <!-- <img class="rounded-circle account-img" style="width: 10%;" src=" {{ user.profile.image.url }} " alt=""> -->
-              <img src={{ user.profile.image.url }} 
+              <!-- <img src={{ user.profile.photo.url }} 
                 class="rounded-circle img-fluid" style="width: 150px;" alt=" " >
               <h5 class="my-3"> Profile for {{user.username}}</h5>
-              
+              <a class="breadcrumb-item" style="margin-left: 5%;" href="{% url 'edit_profile' %}"> Edit Profile </a>
+               -->
              
-            </div>
-          </div>
+            <!-- </div>
+          </div> -->
         
-        </div>
-        <div class="col-lg-8">
+        <!-- </div> -->
+        <div class="row">
+        <div class="col-lg-6">
           <div class="card mb-4">
             <div class="card-body">
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Full Name</p>
-                </div>
-                <div class="col-sm-9">
-                  <h5 class="my-3"> {{user.profile.full_name }}</h5>
+              <img src={{ user.profile.photo.url }} 
+                class="rounded-circle img-fluid" style="width: 150px;" alt=" " >
+              <h5 class="my-3"> Profile for {{user.username}}</h5>
+              <a class="breadcrumb-item" style="margin-left: 5%;" href="{% url 'edit_profile' %}"> Edit Profile </a>
+              
+                <!-- <div class="col-sm-3">
+                  <p class="mb-0">Full Name:</p>
+                </div> -->
+                <!-- <div class="col-sm-9">
+                  <h5 class="my-3"> {{user.profile.full_name }}</h5> -->
                   <!-- <p class="text-muted mb-0">{{user.full_name }} </p> -->
-                </div>
+                <!-- </div> -->
               </div>
               <hr>
               <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Email</p>
+                <div class="col-sm-3" >
+                  <p style="margin-left: 10px;" class="mb-0">Full Name:</p>
                 </div>
                 <div class="col-sm-9">
+                  
+                  <p class="text-muted mb-0">{{user.profile.full_name }} </p>
+                </div>
+              </div>
+              <!-- <hr> -->
+              <hr>
+              <div class="row">
+                <div class="col-sm-3" >
+                  <p style="margin-left: 10px;" class="mb-0">Email:</p>
+                </div>
+                <div class="col-sm-9">
+                  
                   <p class="text-muted mb-0">{{user.email }} </p>
                 </div>
               </div>
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">Mobile Number</p>
+                  <p style="margin-left: 10px;" class="mb-0">Mobile Number:</p>
                 </div>
                 <div class="col-sm-9">
                   <p class="text-muted mb-0">{{user.profile.mobile_number }}</p>
@@ -68,7 +73,7 @@
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">Mobile</p>
+                  <p style="margin-left: 10px;" class="mb-0">Mobile</p>
                 </div>
                 <div class="col-sm-9">
                   <p class="text-muted mb-0">{{user.profile.mobile_number }}</p>
@@ -77,10 +82,10 @@
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">Location</p>
+                  <p style="margin-left: 10px;" class="mb-0">Location:</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">{{user.profile.location }}</p>
+                  <p class="text-muted mb-0" style="margin-bottom:10px ;">{{user.profile.location }}</p>
                 </div>
               </div>
             </div>
@@ -89,6 +94,8 @@
         </div>
       </div>
     </div>
+
+    
   </section>  
 
 
@@ -189,3 +196,19 @@
 
 
 {% endblock content%}
+
+
+
+<!-- <div class="row">
+  <div class="col">
+    <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a href="/">Home</a></li> 
+                     
+        <li class="breadcrumb-item"><a href="#">User</a></li> -->
+        <!-- <li  aria-current="page"> Profile for {{user.username}} </li> -->
+        <!-- <li class="breadcrumb-item"><a href="accounts/logout">logout</a></li>
+      </ol>
+    </nav>
+  </div>
+</div> -->

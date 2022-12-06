@@ -1,18 +1,40 @@
 
+/* .landingpage{
+  background-image: url(/static/images/burger\ and\ chips.jpg);
+} */
+
+
 .landing {
-    background: url(/static/images/Landing\ page1.jpg); 
+ 
+    
+    filter: brightness(50%);
     height: 650px;
     margin-left: 5px; 
     margin-right: 5px;  
     background-position: center;    
-    background-size: cover;    
+    background-size: cover; 
+    /* color: red; */
+    
+
+      
   }
+
+  .page{
+    background: url(/static/images/Landingpage1.jpg);
+    color: #cb2027;
+    background-color: #cb2027;
+    
+  }
+
+ 
+
+
 
   /* .backgound {
     opacity: 0.6;
   } */
 
-  /* .landing text {
+  /* landing. text {
     color: white; 
     padding-top: 15%;
   } */

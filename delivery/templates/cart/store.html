@@ -7,14 +7,19 @@
     <div class="row">
 
       {% for product in products %}  
+
+      
+      
                     
         <div class="col-lg-4" id="productContainer" style="margin-bottom:10px ; margin-top: 15px;">
-            <img class="img-fluid img-thumbnail" style="width: 21rem; height: 18rem;"src= "{{ product.image.url}}"  alt="" >
+            <img class="img-fluid img-thumbnail" style="width: 21rem; height: 15rem;"src= "{{ product.image.url}}"  alt="" >
             <!-- <img class="thumbail" src="{{ product.image.url}}"  alt=""> -->
             <div class="box-element product">
                 <h6><strong>Food: {{ product.name }}</strong></h6>
+                <h6><strong>Restaurant: {{product.id.profile.full_name}}</strong></h6>
+               
                 <hr>
-                <button value="{{product.id}}" > Add To Cart</a></button>  
+                <button value="{{product.id}}" class="btn btn-success" > Add To Cart</a></button>  
                    
                             
 

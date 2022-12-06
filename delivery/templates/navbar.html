@@ -8,10 +8,10 @@
 
     <ul class="nav justify-content-end" style="margin-right: 20px;">
         <li class="nav-item">
-          <a class="nav-link active" style="color: black; font-weight: bolder;" href="/"> Home</a>
+          <a class="nav-link active" style="color: black; " href="/"> Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color: black; font-weight: bolder;" href="/store"> Order</a>
+          <a class="nav-link" style="color: black; " href="/store"> Order</a>
         </li>
         
         <!-- <li class="nav-item">
@@ -26,29 +26,32 @@
         {% if user.is_vendor %}  
         <li class="nav-item">
           <!-- <a class="nav-link" style="color: black; font-weight: bolder;" href="profile"> Profile for {{request.user.username}} </a> -->
-          <a class="nav-link" style="color: black; font-weight: bolder;" href="{% url 'vendor' %}"> Profile for {{request.user.username}} </a>
+          <a class="nav-link" style="color: black; " href="{% url 'vendor' %}"> Profile for {{request.user.username}} </a>
         </li>
+        <!-- <a class="nav-link" style="color: black; font-weight: bolder;" href="profile"> Profile for {{request.user.username}} </a> -->
+        <a class="nav-link" style="color: black; " href="{% url 'post' %}"> Post Food </a>
+      </li>
         {% endif %}
         {% if user.is_rider %}  
         <li class="nav-item">
           <!-- <a class="nav-link" style="color: black; font-weight: bolder;" href="profile"> Profile for {{request.user.username}} </a> -->
-          <a class="nav-link" style="color: black; font-weight: bolder;" href="{% url 'rider' %}"> Profile for {{request.user.username}} </a>
+          <a class="nav-link" style="color: black; " href="{% url 'rider' %}"> Profile for {{request.user.username}} </a>
         </li>
         {% endif %}
         {% if user.is_customer %}  
         <li class="nav-item">
           <!-- <a class="nav-link" style="color: black; font-weight: bolder;" href="profile"> Profile for {{request.user.username}} </a> -->
-          <a class="nav-link" style="color: black; font-weight: bolder;" href="{% url 'customer' %}"> Profile for {{request.user.username}} </a>
+          <a class="nav-link" style="color: black; " href="{% url 'customer' %}"> Profile for {{request.user.username}} </a>
         </li>
         {% endif %}
         {% if user.is_superuser %}  
         <li class="nav-item">
           <!-- <a class="nav-link" style="color: black; font-weight: bolder;" href="profile"> Profile for {{request.user.username}} </a> -->
-          <a class="nav-link" style="color: black; font-weight: bolder;" href="{% url 'adminpage' %}"> Profile for {{request.user.username}} </a>
+          <a class="nav-link" style="color: black; " href="{% url 'adminpage' %}"> Profile for {{request.user.username}} </a>
         </li>
         {% endif %}
         <li class="nav-item">
-          <a class="nav-link" style="color: black; font-weight: bolder; " href="accounts/logout"> logout </a>
+          <a class="nav-link" style="color: black;  " href="accounts/logout"> logout </a>
         </li>
 
 
@@ -59,9 +62,9 @@
 
          <li class="nav-item">
     
-          <a class="nav-link" style="color: black; font-weight: bolder;" id="num_of_items" href="{% url 'cart' %}"> Cart {{cart.num_of_items}}</a>
+          <a class="nav-link" style="color: black; " id="num_of_items" href="{% url 'cart' %}"> Cart {{cart.num_of_items}}</a>
           
-            
+          <!-- <i  id="num_of_items" class="fa fa-shopping-cart" href="{% url 'cart' %}" > {{cart.num_of_items}} </i> -->
           
           <!-- <p id="cart-total">{{request.session.cart|length}}</p> -->
         </li> 
@@ -76,17 +79,17 @@
           {% if user.is_superuser %}  
 
           <li class="nav-item">
-            <a class="nav-link" style="color: black;  font-weight: bolder;" href="{%url 'approval'%}">Admin Approval</a>
+            <a class="nav-link" style="color: black;  " href="{%url 'approval'%}">Admin Approval</a>
           </li>
 
           {% endif %}
         
         {% else %}
         <li class="nav-item">
-          <a class="nav-link" style="color: black;  font-weight: bolder;" href="login">Login </a>
+          <a class="nav-link" style="color: black;  " href="login">Login </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color: black; font-weight: bolder; " href="register"> Signup </a>
+          <a class="nav-link" style="color: black;  " href="register"> Signup </a>
         </li>
 
         <!-- <li class="nav-item">

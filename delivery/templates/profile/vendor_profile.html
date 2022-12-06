@@ -6,16 +6,16 @@
 
 <link rel="stylesheet" href="/static/css/styles.css">
 <br><br>
-<h3 align="center">Vendor Profile, Photo and posts</h3> <br><br>
-<div class="container">
+<h3 align="center">Vendor Profile and posts</h3> <br><br>
+<!-- <div class="container">
   <div class="content-section" >
-      <div class="static">
-          <a href="{% url 'edit_profile' %}"> Edit Profile </a>
-          <img class="rounded-circle account-img" style="width: 10%;" src=" {{ photo.url }} " alt="">
-          <img class="rounded-circle account-img" style="width: 10%;" src="/static/images/burger and chips.jpg" alt=""> Restaurant name
+      <div class="static"> -->
+          <!-- <a href="{% url 'edit_profile' %}"> Edit Profile </a> -->
+          <!-- <img class="rounded-circle account-img" style="width: 10%;" src=" {{ profile.photo.url }} " alt=""> 
+          <img class="rounded-circle account-img" style="width: 10%;" src="/static/images/burger and chips.jpg" alt=""> <a href="{% url 'edit_profile' %}"> Edit Profile </a>
           
           <div class="static-body">
-              <h2 class="account-heading">Name {{ user.profile.full_name }} </h2>
+              <h4 class="account-heading">Restaurant Name: {{ user.profile.full_name }} </h4>
               <p class="test-secondary">Mobile Number: {{user.profile.mobile_number }} </p>
               <p class="test-secondary"> Email: {{user.profile.email }} </p>
               <p class="test-secondary"> Description: {{user.profile.description }} </p>
@@ -24,7 +24,135 @@
           </div>    
       </div>
   </div>
-</div>
+</div> -->
+
+
+
+<!-- <div class="col-lg-4" id="productContainer" style="margin-bottom:10px ; margin-top: 15px;">
+  <img class="img-fluid img-thumbnail" style="width: 21rem; height: 18rem;"src= "{{ product.image.url}}"  alt="" >
+  <img class="thumbail" src="{{ product.image.url}}"  alt=""> -->
+  <!-- <div class="box-element product">
+      <h6><strong>Food: {{ vendor.location}}</strong></h6>
+      <h6><strong>Restaurant: {{user.full_name}}</strong></h6>
+     
+      <hr> -->
+      <!-- <button value="{{product.id}}" > Add To Cart</a></button>   -->
+         
+                  
+
+      <!-- <a class="btn btn-outline-success" href="#">View</a> -->
+      <!-- <h5 style="display: inline-block; float: right;" ><strong>Kes {{post.price|floatformat:2}}</strong></h5>            
+
+  </div>            
+</div> --> 
+<section style="background-color: #eee;" align="center">
+  <div class="container py-5">     
+
+    <div class="row">
+      <!-- <div class="col-lg-4"> -->
+        <!-- <div class="card mb-4">
+          <div class="card-body text-center"> -->
+            <!-- <img class="rounded-circle account-img" style="width: 10%;" src=" {{ user.profile.image.url }} " alt=""> -->
+            <!-- <img src={{ user.profile.photo.url }} 
+              class="rounded-circle img-fluid" style="width: 150px;" alt=" " >
+            <h5 class="my-3"> Profile for {{user.username}}</h5>
+            <a class="breadcrumb-item" style="margin-left: 5%;" href="{% url 'edit_profile' %}"> Edit Profile </a>
+             -->
+           
+          <!-- </div>
+        </div> -->
+      
+      <!-- </div> -->
+      <div class="row">
+      <div class="col-lg-6">
+        <div class="card mb-4">
+          <div class="card-body">
+            <img src={{ user.profile.photo.url }} 
+              class="rounded-circle img-fluid" style="width: 150px;" alt=" " >
+            <h5 class="my-3"> Profile for {{user.username}}</h5>
+            <a class="breadcrumb-item" style="margin-left: 5%;" href="{% url 'edit_profile' %}"> Edit Profile </a>
+            
+              <!-- <div class="col-sm-3">
+                <p class="mb-0">Full Name:</p>
+              </div> -->
+              <!-- <div class="col-sm-9">
+                <h5 class="my-3"> {{user.profile.full_name }}</h5> -->
+                <!-- <p class="text-muted mb-0">{{user.full_name }} </p> -->
+              <!-- </div> -->
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3" >
+                <p style="margin-left: 10px;" class="mb-0">Full Name:</p>
+              </div>
+              <div class="col-sm-9">
+                
+                <p class="text-muted mb-0">{{user.profile.full_name }} </p>
+              </div>
+            </div>
+            <!-- <hr> -->
+            <hr>
+            <div class="row">
+              <div class="col-sm-3" >
+                <p style="margin-left: 10px;" class="mb-0">Email:</p>
+              </div>
+              <div class="col-sm-9">
+                
+                <p class="text-muted mb-0">{{user.email }} </p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p style="margin-left: 10px;" class="mb-0">Mobile Number:</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{user.profile.mobile_number }}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p style="margin-left: 10px;" class="mb-0">Mobile</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{user.profile.mobile_number }}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p style="margin-left: 10px;" class="mb-0">Location:</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0" style="margin-bottom:10px ;">{{user.profile.location }}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p style="margin-left: 10px;" class="mb-0">Approved:</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0" style="margin-bottom:10px ;">{{user.approved}}</p>
+              </div>
+
+
+               
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  
+</section> 
+<!-- {% for product in products %} -->
+<!-- {% endfor%} -->
+
+
 
 <!-- <h2 align="center"> Our Menu </h2> 
 

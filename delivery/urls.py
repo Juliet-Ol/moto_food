@@ -24,22 +24,7 @@ urlpatterns = [
     path('checkout/', views.checkout, name='checkout'),
     path('post_checkout/', views.post_checkout, name='post_checkout'),
     # path('checkout/<str:pk>', views.checkout, name='checkout'),
-    path('approval/', views.approval, name='approval'),
-    # path('update_item/', views.updateItem, name='update_item'),
-    
-    # path('view-post/<int:id>', views.viewPost, name="view-post"),
-    # path('edit-post/<int:id>', views.editPost, name='edit-post'),
-
-    # path('cart/add/<int:id>/', views.cart_add, name='cart_add'),
-    
-    # path('cart/item_clear/<int:id>/', views.item_clear, name='item_clear'),
-    # path('cart/item_increment/<int:id>/',
-    #      views.item_increment, name='item_increment'),
-    # path('cart/item_decrement/<int:id>/',
-    #      views.item_decrement, name='item_decrement'),
-    # path('cart/cart_clear/', views.cart_clear, name='cart_clear'),
-    # path('cart/cart-detail/',views.cart_detail,name='cart_detail'),
-    
+    path('approval/', views.approval, name='approval'),    
     
 ]
 if settings.DEBUG:
@@ -68,39 +53,3 @@ if settings.DEBUG:
 
 
 
-
-
-
-
-
-
-
-
-
-# from django.urls import path
-# from django.conf import settings
-# from django.conf.urls.static import static
-# # from django.contrib import admin
-
-# from . import views
-# from delivery import views
-# from delivery.views import Customer, Vendor
-
-# urlpatterns = [
-#     path('', views.index, name='index'),
-#     # path('register/', views.register, name='register'),
-#     path('accounts/register/', views.SignUpView.as_view(), name='register'),
-#     path('accounts/signup/customer/', views.CustomerSignUpView.as_view, name='customer_signup'),
-#     path('accounts/signup/vendor/', views.VendorSignUpView.as_view, name='vendor_signup'),
-#     path('accounts/signup/rider/', views.RiderSignUpView.as_view, name='rider_signup'),
-   
-#     path('profile/', views.profile, name='profile'),
-#     path('edit_profile', views.editProfile, name='edit_profile'),
-#     path('cart', views.cart, name='cart'),
-#     path('checkout', views.checkout, name='checkout'),
-#     path('post', views.post, name='post'),
-#     path('register_landing/', views.register_landing, name='register-landing'),
-    
-# ]
-# if settings.DEBUG:
-#     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

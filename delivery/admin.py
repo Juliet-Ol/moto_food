@@ -13,9 +13,6 @@ admin.site.register(Order)
 admin.site.register(CartItem)
 admin.site.register(Cart)
 admin.site.register(ShippingAddress)
-
-
-
 admin.site.register(Admin)
 admin.site.register(Approvals)
 
