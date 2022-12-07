@@ -4,20 +4,20 @@
 } */
 
 
-.landing {
+/* .landing {
  
-    
+    background-image: url(/static/images/Landingpage1.jpg);
     filter: brightness(50%);
     height: 650px;
     margin-left: 5px; 
     margin-right: 5px;  
     background-position: center;    
     background-size: cover; 
-    /* color: red; */
+  
     
 
       
-  }
+  } */
 
   .page{
     background: url(/static/images/Landingpage1.jpg);
