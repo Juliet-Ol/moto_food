@@ -23,6 +23,10 @@ def cart(request):
         cart, created = Cart.objects.get_or_create(user=request.user, completed=False)
         cartitems = cart.cartitems.all()
 
+       
+
+     
+
     context ={"cart":cart, "items":cartitems}
     return render (request, 'cart/cart.html', context) 
 
@@ -31,6 +35,10 @@ def store (request):
     products = Product.objects.all()
     if request.user.is_authenticated:
         cart, created = Cart.objects.get_or_create(user=request.user, completed=False)
+
+    else:
+        products = Product.objects.all()
+        return render(request, 'cart/cart.html')  
 
     context = {'products': products, 'cart':cart}
     return render(request, 'cart/store.html', context)    

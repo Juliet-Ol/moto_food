@@ -1,23 +1,24 @@
 # Moto Food
 
-Food App - This is a food delivery app built using django. A vendor can register and post the food menu they have and a customer order food from the app and have it delivered to there location 
+Moto Food - This is a food delivery app built using django. A vendor can register and post the food menu they have and a customer can order food from the app and have it delivered to there location in Nairobi. 
 
 ---
 ## Table of contents
 ---
 1. [Features](#features)
-2. [Installation](#Installation-/-Setup instruction)
+2. [Installation](#Installation-/-Setup-instruction)
 3. [Technologies](#technologies-used)
 4. [Setup](#Project-Setup-and-instructions)
 5. [Author](#contact-information)    
 
 
 ## Features
+It is a multi user authentication
 The users can perform the following functions:
 
 - A customer can sign up
 - A customer can order food from the app
-- A customer can check the profile history
+- A customer can create a profile
 - A vendor can create an account
 - A vendor can create a profile 
 - A vendor can create post his/her menu
@@ -32,6 +33,7 @@ The application requires the following installations to operate:
 
 ## Technologies Used
 - Django
+- Java script
 
 ## Project Setup Instructions
 1. git clone the repository 
