@@ -5,6 +5,7 @@ cart==1.2.1
 certifi==2022.9.24
 cloudinary==1.30.0
 confusable-homoglyphs==3.2.0
+dj-database-url==1.0.0
 Django==4.1.3
 django-bootstrap-v5==1.0.11
 django-registration==3.3
@@ -23,3 +24,4 @@ soupsieve==2.3.2.post1
 sqlparse==0.4.3
 tomli==2.0.1
 urllib3==1.26.12
+whitenoise==6.2.0
