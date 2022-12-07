@@ -8,7 +8,7 @@
   
   {% load static %}
   {% load bootstrap5 %}
-  <link rel="stylesheet" href="/static/css/styles.css">
+  <link rel="stylesheet" href="./static/css/styles.css">
 
   {% block styles %}
   {% bootstrap_css %}
@@ -32,9 +32,15 @@
   <!-- landing page section-->
 
   <div>  
-    <div class="landing" style="background-image: url(/static/images/Landingpage1.jpg);" >      
+    <div class="landing" style="background-image: url(/static/images/Landingpage1.jpg);
+    filter: brightness(60%);
+    height: 650px;
+    margin-left: 5px; 
+    margin-right: 5px;  
+    background-position: center;    
+    background-size: cover; ">      
 
-      <div class="landingtext" >          
+      <div class="landing text" >          
         <h1 align="center" style="color: white; padding-top: 15%;"> Moto Food Delivery </h1>  
         <h3 align="center" style="color: white;"> food at your finger tips</h3>
              
