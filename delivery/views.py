@@ -21,9 +21,7 @@ def cart(request):
 
     if request.user.is_authenticated:
         cart, created = Cart.objects.get_or_create(user=request.user, completed=False)
-        cartitems = cart.cartitems.all()
-
-       
+        cartitems = cart.cartitems.all()     
 
      
 
@@ -36,13 +34,12 @@ def store (request):
     if request.user.is_authenticated:
         cart, created = Cart.objects.get_or_create(user=request.user, completed=False)
 
-    else:
-        products = Product.objects.all()
-        return render(request, 'cart/cart.html')  
+    # else:
+    #     products = Product.objects.all()
+    #     return render(request, 'cart/cart.html')  
 
     context = {'products': products, 'cart':cart}
     return render(request, 'cart/store.html', context)    
-
 
 def update_cart(request):
     data = json.loads(request.body)

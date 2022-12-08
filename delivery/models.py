@@ -39,7 +39,7 @@ class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True) 
     date_ordered = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False)
-    transaction_id = models.CharField(max_length=200, null=True)
+    # transaction_id = models.CharField(max_length=200, null=True)
     #image
     def __str__(self):
         return str(self.id)
@@ -149,7 +149,7 @@ class Profile(models.Model):
 
 class Post (models.Model):
     # vendor = models.ForeignKey(Vendor, on_delete=models.SET_NULL, null=True, blank=True)
-    title = models.CharField(max_length=20)
+    title = models.CharField(max_length=50)
     post = models.CharField(max_length=100)
     author = models.ForeignKey(User, on_delete = models.CASCADE)   
     published_date = models.DateTimeField(auto_now_add=True)
@@ -164,9 +164,10 @@ class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     completed = models.BooleanField(default=False)
     # created_at = models.DateTimeField(default=datetime.now)
+   
 
-    def __str__(self):
-        return str(self.id)
+    # def __str__(self):
+    #     return str(self.id)
 
 
 
