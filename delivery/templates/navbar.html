@@ -10,9 +10,7 @@
         <li class="nav-item">
           <a class="nav-link active" style="color: black; " href="/"> Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" style="color: black; " href="/store"> Order</a>
-        </li>
+        
         
         <!-- <li class="nav-item">
           <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>{{order.get_cart_item}}</b></span></h4>
@@ -22,6 +20,9 @@
         {% if user.is_authenticated %}
         <li class="nav-item">
           <!-- <a class="nav-link" style="color: black; font-weight: bolder;" href="#"> {{request.user.username}} is logged in</a> -->
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: black; " href="/store"> Order</a>
         </li>
         {% if user.is_vendor %}  
         <li class="nav-item">
