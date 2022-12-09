@@ -163,11 +163,12 @@ class Cart(models.Model):
     id = models.UUIDField(default=uuid.uuid4, primary_key=True,)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     completed = models.BooleanField(default=False)
+    # session_id = models.BooleanField(default=False)
     # created_at = models.DateTimeField(default=datetime.now)
    
 
-    # def __str__(self):
-    #     return str(self.id)
+    def __str__(self):
+        return str(self.id)
 
 
 

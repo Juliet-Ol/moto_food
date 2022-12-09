@@ -13,11 +13,12 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
-
+from decouple import config, Csv
 
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
@@ -33,6 +34,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
+
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -97,16 +99,46 @@ WSGI_APPLICATION = 'moto_food.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'foodie',
-        'USER': 'juliet',
-    'PASSWORD':'',
+MODE = os.getenv("MODE")
+# print(MODE)
+DATABASE_URL=config('DATABASE_URL')
+# print(DATABASE_URL)
+if MODE == 'dev':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',            
+            'NAME': config('DEVELOPMENT_DATABASE_NAME'),
+            'USER': config('DEVELOPMENT_DATABASE_USER'),
+        'PASSWORD': config('DEVELOPMENT_DATABASE_PASSWORD'),
+        }
     }
-}
 
+elif MODE == 'prod':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',            
+            'NAME': config('PRODUCTION_DATABASE_NAME'),
+            'USER': config('PRODUCTION_DATABASE_USER'),
+        'PASSWORD': config('PRODUCTION_DATABASE_PASSWORD'),
+        'HOST': config('PRODUCTION_DATABASE_HOST'),
+        'PORT': config('PRODUCTION_DATABASE_PORT')
+        }
+    }
+else:
+    # DATABASES = {
+    #     'default': dj_database_url.config(default=config('DATABASE_URL'))
+    # }
+
+    DATABASES = {
+    "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
+    }    
+
+# db_from_env = dj_database_url.config(default=DATABASE_URL, conn_max_age=500),
+   
+
+# DATABASES['default'].update(db_from_env)
+
+# print (f'134: {DATABASES}')
 
 
 # Password validation
@@ -187,10 +219,10 @@ cloudinary.config(
 
 APPEND_SLASH=False 
 
-import dj_database_url
 
-DATABASE_URL = os.getenv("DATABASE_URL")
 
-DATABASES = {
-    "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
-}
+
+
+
+
+# print (f'200: {DATABASES}')

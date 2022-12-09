@@ -40,6 +40,7 @@ def store (request):
 
     context = {'products': products, 'cart':cart}
     return render(request, 'cart/store.html', context)    
+    
 
 def update_cart(request):
     data = json.loads(request.body)
